@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_002837) do
+ActiveRecord::Schema.define(version: 2021_02_14_014822) do
 
   create_table "courses", force: :cascade do |t|
     t.string "code"
@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 2021_02_14_002837) do
   end
 
   create_table "textbooks", force: :cascade do |t|
-    t.string "name"
     t.string "author"
     t.string "edition"
     t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["course_id"], name: "index_textbooks_on_course_id"
   end
 
