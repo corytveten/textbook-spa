@@ -22,10 +22,23 @@ const loadSchools = () => {
 }
 
 const renderSchools = (schoolObj) => {
-    //create JS Object for school?
-    console.log(schoolObj);
+    //console.log(schoolObj);
     const schoolLi = document.createElement('li');
     schoolLi.classList.add('school');
     schoolLi.innerText = schoolObj.name;
+    loadCourses(schoolObj.id);
     schoolList.appendChild(schoolLi);
+}
+
+const loadCourses = (schoolId) => {
+    //console.log(schoolId);
+    fetch(COURSES_URL + `/${schoolId}`)
+    .then(res => res.json())
+    .then(json => {
+        renderCourses(json)
+    });
+}
+
+const renderCourses = (courseObj) => {
+    console.log(courseObj)
 }
