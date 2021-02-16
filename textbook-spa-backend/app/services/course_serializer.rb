@@ -5,7 +5,7 @@ class CourseSerializer
     end
    
     def to_serialized_json
-      @course.to_json(:include => {:school => {:only => :name}}, :except => [:created_at, :updated_at])  
+      @course.to_json(:include => {:school => {:only => :name}, :textbooks => {:only => [:title, :author, :edition]}}, :except => [:created_at, :updated_at])  
     end
    
   end

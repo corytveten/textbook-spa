@@ -32,7 +32,7 @@ const renderSchools = (schoolObj) => {
 }
 
 const loadCourses = (schoolId) => {
-    console.log(schoolId);
+    //console.log(schoolId);
     fetch(COURSES_URL + `/${schoolId}`)
     .then(res => res.json())
     .then(json => {
@@ -46,5 +46,10 @@ const renderCourses = (courseObj) => {
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
     courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
+    loadTextbooks(courseObj.id);
     schoolUl.appendChild(courseLi);
+}
+
+const loadTextbooks = (courseId) => {
+    console.log(courseId)
 }
