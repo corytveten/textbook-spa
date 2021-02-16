@@ -42,7 +42,7 @@ const loadCourses = (schoolId) => {
 
 const renderCourses = (courseObj) => {
     //console.log(courseObj)
-    const schoolUl = document.querySelector('.school');
+    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}'`);
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
     courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
