@@ -26,19 +26,25 @@ const renderSchools = (schoolObj) => {
     const schoolLi = document.createElement('li');
     schoolLi.classList.add('school');
     schoolLi.innerText = schoolObj.name;
+    schoolLi.setAttribute('data-school-id', schoolObj.id)
     loadCourses(schoolObj.id);
     schoolList.appendChild(schoolLi);
 }
 
 const loadCourses = (schoolId) => {
-    //console.log(schoolId);
+    console.log(schoolId);
     fetch(COURSES_URL + `/${schoolId}`)
     .then(res => res.json())
     .then(json => {
-        renderCourses(json)
+        renderCourses(json);
     });
 }
 
 const renderCourses = (courseObj) => {
-    console.log(courseObj)
+    //console.log(courseObj)
+    const schoolUl = document.querySelector('.school');
+    const courseLi = document.createElement('li');
+    courseLi.classList.add('course');
+    courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
+    schoolUl.appendChild(courseLi);
 }
