@@ -46,10 +46,18 @@ const renderCourses = (courseObj) => {
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
     courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
-    loadTextbooks(courseObj.id);
+
+    const loadTextbooks = (courseId) => {
+        console.log(courseId.textbooks[0]);
+        const textbook = courseId.textbooks[0].title;
+        const textLi = document.createElement('li');
+        textLi.classList.add('textbook');
+        textLi.innerHTML = `Textbook: <span style="color: red"><em>${textbook}</em></span>`
+        schoolUl.appendChild(textLi);
+    }
+
     schoolUl.appendChild(courseLi);
+    loadTextbooks(courseObj);
 }
 
-const loadTextbooks = (courseId) => {
-    console.log(courseId)
-}
+
