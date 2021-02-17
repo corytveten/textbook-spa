@@ -4,10 +4,13 @@ const SCHOOLS_URL = `${BASE_URL}/schools`;
 const COURSES_URL = `${BASE_URL}/courses`;
 const TEXTBOOKS_URL = `${BASE_URL}/textbooks`;
 const schoolList = document.querySelector('.school-list')
+const schoolForm = document.querySelector('#school-form')
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadSchools()
-})
+    loadSchools();
+    submitSchool();
+});
+
 
 //fetch schools
 const loadSchools = () => {
@@ -58,6 +61,24 @@ const renderCourses = (courseObj) => {
 
     schoolUl.appendChild(courseLi);
     loadTextbooks(courseObj);
+    //displayCourses();
+
+}
+
+//const displayCourses = () => {
+//    const schoolElems = document.querySelector('.school');
+//    console.log(schoolElems);
+//    schoolElems.addEventListener('click', (e) => {
+//        console.log(e.target.dataset.schoolId);
+//    })
+//}
+
+const submitSchool = () => {
+    schoolForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const schoolInput = document.getElementById('school-input')
+        console.log(schoolInput.value);
+    })
 }
 
 

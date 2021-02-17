@@ -12,10 +12,21 @@
         <h1>Textbook Database</h1>
     </header>
     <main>
-        <h2>Select a School:</h2>
-        <ul class='school-list'>
-            <!-- ***ADD ALPHA FILTER (FROM POKEMON LAB) -->
-        </ul>
+        <div id='listings'>
+            <h2>Select a School</h2>
+            <ul class='school-list'>
+                <!-- ***ADD ALPHA FILTER (FROM POKEMON LAB) -->
+            </ul>
+        </div>
+        <div id='add-new-school'>
+            <h2>Add a School</h2>
+            <p>Enter a new school name, then click "Submit"</p>
+            <form id='school-form'>
+                <input type="text" name='name' value='' placeholder="Enter School Name" id="school-input">
+                <input id='school-btn' type="submit" name="submit" value="Submit">
+            </form>
+        </div>
+
     </main>
     <script src="./index.js"></script>
 </body>

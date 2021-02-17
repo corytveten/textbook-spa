@@ -18,9 +18,19 @@ body {
 .course {
   margin-left: 25px; 
   padding-left: 0;
+  display: none;
 }
 
 .textbook {
   margin-left: 30px; 
   padding-left: 0;
+  display: none;
+}
+
+#add-new-school {
+  padding-top: 20px;
+}
+
+#add-new-school p, form {
+  margin-left: 25px
 }
