@@ -52,7 +52,7 @@ const renderCourses = (courseObj) => {
         const textbook = courseId.textbooks[0].title;
         const textLi = document.createElement('li');
         textLi.classList.add('textbook');
-        textLi.innerHTML = `Textbook: <span style="color: red"><em>${textbook}</em></span>`
+        textLi.innerHTML = `Textbook: <span style="color: #624a72"><em>${textbook}</em></span>`
         schoolUl.appendChild(textLi);
     }
 
