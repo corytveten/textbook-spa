@@ -30,7 +30,7 @@ const renderSchools = (schoolObj) => {
     schoolLi.classList.add('school');
     schoolLi.innerText = schoolObj.name;
     schoolLi.setAttribute('data-school-id', schoolObj.id)
-    loadCourses(schoolObj.id);
+    //loadCourses(schoolObj.id);
     schoolList.appendChild(schoolLi);
 }
 
@@ -44,7 +44,7 @@ const loadCourses = (schoolId) => {
 }
 
 const renderCourses = (courseObj) => {
-    //console.log(courseObj)
+    console.log(courseObj)
     const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}'`);
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
@@ -78,7 +78,8 @@ const submitSchool = () => {
         e.preventDefault();
         const schoolInput = document.getElementById('school-input')
         //console.log(schoolInput.value);
-        addNewSchool(schoolInput.value)
+        addNewSchool(schoolInput.value);
+        schoolInput.value = "";
     })
 }
 
