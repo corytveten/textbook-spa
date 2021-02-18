@@ -1,4 +1,4 @@
 class School < ApplicationRecord
     has_many :courses
-    validates :name, uniqueness: { case_sensitvie: false, message: "School already exists."}
+    validates :name, uniqueness: { case_sensitive: false, message: "School already exists."}
 end

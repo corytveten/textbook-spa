@@ -12,7 +12,11 @@ class SchoolsController < ApplicationController
 
     def create
         school = School.create(school_params)
-        render json: school        
+        if (school.save)
+            render json: school        
+        else
+            render :error
+        end
     end
 
     #may want to add strong params

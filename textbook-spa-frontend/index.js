@@ -97,5 +97,8 @@ const addNewSchool = (schoolName) => {
         })
         .then(resp => resp.json())
         .then(json => console.log(json))
-
+        .catch(function(error) {
+            alert("School already exists.")
+            //console.log(error.message);
+        })
 };
