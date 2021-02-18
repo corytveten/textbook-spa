@@ -77,8 +77,24 @@ const submitSchool = () => {
     schoolForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const schoolInput = document.getElementById('school-input')
-        console.log(schoolInput.value);
+        //console.log(schoolInput.value);
+        addNewSchool(schoolInput.value)
     })
 }
 
+const addNewSchool = (schoolName) => {
+    console.log(schoolName);
+    
+    let schoolObj = {
+        name: schoolName
+    }
 
+    fetch(SCHOOLS_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(schoolObj)
+        })
+        .then(resp => resp.json())
+        .then(json => console.log(json))
+
+};
