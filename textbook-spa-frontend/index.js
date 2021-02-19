@@ -9,6 +9,7 @@ const schoolForm = document.querySelector('#school-form')
 document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
     submitSchool();
+    loadCourses();
 });
 
 
@@ -34,13 +35,17 @@ const renderSchools = (schoolObj) => {
     schoolList.appendChild(schoolLi);
 }
 
-const loadCourses = (schoolId) => {
+const loadCourses = () => {
+    const schoolList = document.querySelector('.school-list')
+    schoolList.addEventListener('click', (e) => {
+        console.log(e.target)
+    })
     //console.log(schoolId);
-    fetch(COURSES_URL + `/${schoolId}`)
-    .then(res => res.json())
-    .then(json => {
-        renderCourses(json);
-    });
+    //fetch(COURSES_URL + `/${schoolId}`)
+    //.then(res => res.json())
+    //.then(json => {
+    //    renderCourses(json);
+    //});
 }
 
 const renderCourses = (courseObj) => {
