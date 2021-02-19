@@ -31,10 +31,18 @@ body {
   padding-left: 0;
 }
 
-#add-new-school {
+#add-school {
   padding-top: 20px;
 }
 
-#add-new-school p, form {
-  margin-left: 25px
+#add-school p, form {
+  margin-left: 25px;
+}
+
+.add-course {
+  display: none;
+}
+
+.add-course h4 {
+
 }

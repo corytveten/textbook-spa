@@ -19,7 +19,6 @@ class SchoolsController < ApplicationController
         end
     end
 
-    #may want to add strong params
     private
     def school_params
         params.permit(:name)

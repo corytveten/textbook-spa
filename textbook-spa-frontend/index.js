@@ -25,34 +25,54 @@ const loadSchools = () => {
     })
 }
 
+//add school to the DOM
 const renderSchools = (schoolObj) => {
     //console.log(schoolObj);
     const schoolLi = document.createElement('li');
     schoolLi.classList.add('school');
     schoolLi.innerText = schoolObj.name;
-    schoolLi.setAttribute('data-school-id', schoolObj.id)
-    //loadCourses(schoolObj.id);
+    schoolLi.setAttribute('data-school-id', schoolObj.id);
+    
     schoolList.appendChild(schoolLi);
+    createCourseForm(schoolObj);
+};
+
+//create a form to post courses, form is attached to school
+const createCourseForm = (schoolObj) => {
+    console.log(schoolObj);
+
+    const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"]`);
+    console.log(schoolNode);
+    const addCourseDiv = document.createElement('div');
+    addCourseDiv.classList.add('add-course')
+    addCourseDiv.innerHTML = "<h4>Add a Course</h4>"
+    schoolNode.append(addCourseDiv);
 }
 
 const loadCourses = () => {
     const schoolList = document.querySelector('.school-list')
     schoolList.addEventListener('click', (e) => {
-        console.log(e.target.dataset.schoolId);
+        //console.log(e.target.dataset.schoolId);
+        const addCourseDiv = schoolList.querySelector('.add-course')
+        addCourseDiv.style.display = 'block';
         const schoolId = e.target.dataset.schoolId;
     
         fetch(COURSES_URL + `/${schoolId}`)
         .then(res => res.json())
         .then(json => {
             renderCourses(json);
-        });
+        })
+        .catch(error => {
+            alert('No courses listed for this school.')
+            console.log(error)
+        })
     });
 }
 
 const renderCourses = (courseObj) => {
     //console.log(courseObj)
     const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']`);
-    console.log(schoolUl);
+    //console.log(schoolUl);
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
     courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;

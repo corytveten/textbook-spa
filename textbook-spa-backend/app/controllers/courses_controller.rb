@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
 
+    #add logic so courses only appear once
     def index
         courses = Course.all
         render json: CourseSerializer.new(courses).to_serialized_json
@@ -10,7 +11,7 @@ class CoursesController < ApplicationController
         if (course)
             render json: CourseSerializer.new(course).to_serialized_json
         else
-            render json: {message: "no courses for school"}
+            render :error #{message: "no courses for school"}
         end
     end
 
