@@ -38,45 +38,47 @@ const renderSchools = (schoolObj) => {
 const loadCourses = () => {
     const schoolList = document.querySelector('.school-list')
     schoolList.addEventListener('click', (e) => {
-        console.log(e.target)
-    })
-    //console.log(schoolId);
-    //fetch(COURSES_URL + `/${schoolId}`)
-    //.then(res => res.json())
-    //.then(json => {
-    //    renderCourses(json);
-    //});
+        console.log(e.target.dataset.schoolId);
+        const schoolId = e.target.dataset.schoolId;
+    
+        fetch(COURSES_URL + `/${schoolId}`)
+        .then(res => res.json())
+        .then(json => {
+            renderCourses(json);
+        });
+    });
 }
 
 const renderCourses = (courseObj) => {
-    console.log(courseObj)
-    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}'`);
+    //console.log(courseObj)
+    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']`);
+    console.log(schoolUl);
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
     courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
 
-    const loadTextbooks = (courseId) => {
-        console.log(courseId.textbooks[0]);
-        const textbook = courseId.textbooks[0].title;
-        const textLi = document.createElement('li');
-        textLi.classList.add('textbook');
-        textLi.innerHTML = `Textbook: <span style="color: #624a72"><em>${textbook}</em></span>`
-        schoolUl.appendChild(textLi);
-    }
+    //const loadTextbooks = (courseId) => {
+        //console.log(courseId.textbooks[0]);
+        //const textbook = courseId.textbooks[0].title;
+        //const textLi = document.createElement('li');
+        //textLi.classList.add('textbook');
+        //textLi.innerHTML = `Textbook: <span style="color: #624a72"><em>${textbook}</em></span>`
+        //schoolUl.appendChild(textLi);
+    //}
 
     schoolUl.appendChild(courseLi);
-    loadTextbooks(courseObj);
-    //displayCourses();
+    //loadTextbooks(courseObj);
+    displayCourses();
 
 }
 
-//const displayCourses = () => {
-//    const schoolElems = document.querySelector('.school');
-//    console.log(schoolElems);
-//    schoolElems.addEventListener('click', (e) => {
-//        console.log(e.target.dataset.schoolId);
-//    })
-//}
+const displayCourses = () => {
+    const schoolElems = document.querySelector('.school');
+    console.log(schoolElems);
+    schoolElems.addEventListener('click', (e) => {
+        console.log(e.target.dataset.schoolId);
+    })
+}
 
 const submitSchool = () => {
     schoolForm.addEventListener('submit', (e) => {
