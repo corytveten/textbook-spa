@@ -6,6 +6,8 @@ const TEXTBOOKS_URL = `${BASE_URL}/textbooks`;
 const schoolList = document.querySelector('.school-list')
 const schoolForm = document.querySelector('#school-form')
 
+//let showCourse = false;
+
 document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
     submitSchool();
@@ -54,13 +56,15 @@ const createCourseForm = (schoolObj) => {
 
 //event listener that fetches courses
 const loadCourses = () => {
-    const schoolList = document.querySelector('.school-list')
-    schoolList.addEventListener('click', (e) => {
-        //console.log(e.target.dataset.schoolId);
-        const addCourseDiv = schoolList.querySelector('.add-course')
-        addCourseDiv.style.display = 'block';
-        const schoolId = e.target.dataset.schoolId;
+    const schoolList = document.querySelector('.school-list');
     
+    schoolList.addEventListener('click', (e) => {
+        console.log(e.target.dataset.schoolId);
+        const schoolCourseInfo = schoolList.querySelector('.school-course-info')
+        schoolCourseInfo.style.display = 'block';
+        const schoolId = e.target.dataset.schoolId;
+
+
         fetch(COURSES_URL + `/${schoolId}`)
         .then(res => res.json())
         .then(json => {
@@ -70,8 +74,12 @@ const loadCourses = () => {
             alert('No courses listed for this school.')
             console.log(error)
         })
-    }, {once: true});
+    });
+
 }
+
+
+
 
 //json course object from rails is rendered to text in an li
 const renderCourses = (courseObj) => {
@@ -93,10 +101,11 @@ const renderCourses = (courseObj) => {
 
     schoolUl.appendChild(courseLi);
     //loadTextbooks(courseObj);
-    displayCourses();
+    //displayCourses();
 
 }
 
+//??? is this a redundant function???
 const displayCourses = () => {
     const schoolElems = document.querySelector('.school');
     console.log(schoolElems);
@@ -134,3 +143,17 @@ const addNewSchool = (schoolName) => {
             //console.log(error.message);
         })
 };
+
+//toggle view of courses by clicking school
+const toggleView = (showCourse) => {
+    const schoolCourseInfo = schoolList.querySelector('.school-course-info')
+    showCourse = !showCourse;
+
+    if (showCourse === true) {
+        schoolCourseInfo.style.display = "block"
+      } else {
+        schoolCourseInfo.style.display = "none"
+      }
+
+
+}
