@@ -29,8 +29,11 @@ const loadSchools = () => {
 const renderSchools = (schoolObj) => {
     //console.log(schoolObj);
     const schoolLi = document.createElement('li');
+    const schoolCourseInfo = document.createElement('div');
     schoolLi.classList.add('school');
+    schoolCourseInfo.classList.add('school-course-info');
     schoolLi.innerText = schoolObj.name;
+    schoolLi.appendChild(schoolCourseInfo);
     schoolLi.setAttribute('data-school-id', schoolObj.id);
     
     schoolList.appendChild(schoolLi);
@@ -39,16 +42,17 @@ const renderSchools = (schoolObj) => {
 
 //create a form to post courses, form is attached to school
 const createCourseForm = (schoolObj) => {
-    console.log(schoolObj);
+    //console.log(schoolObj);
 
-    const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"]`);
-    console.log(schoolNode);
+    const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"] div`);
+    //console.log(schoolNode);
     const addCourseDiv = document.createElement('div');
     addCourseDiv.classList.add('add-course')
     addCourseDiv.innerHTML = "<h4>Add a Course</h4>"
     schoolNode.append(addCourseDiv);
 }
 
+//event listener that fetches courses
 const loadCourses = () => {
     const schoolList = document.querySelector('.school-list')
     schoolList.addEventListener('click', (e) => {
@@ -69,10 +73,11 @@ const loadCourses = () => {
     }, {once: true});
 }
 
+//json course object from rails is rendered to text in an li
 const renderCourses = (courseObj) => {
     //console.log(courseObj)
-    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']`);
-    //console.log(schoolUl);
+    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']  div`);
+    console.log(schoolUl);
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
     courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;

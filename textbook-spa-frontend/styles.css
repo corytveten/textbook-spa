@@ -46,3 +46,7 @@ body {
 .add-course h4 {
 
 }
+
+.school-course-info {
+  display: block;
+}
