@@ -66,7 +66,7 @@ const loadCourses = () => {
             alert('No courses listed for this school.')
             console.log(error)
         })
-    });
+    }, {once: true});
 }
 
 const renderCourses = (courseObj) => {

@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
 
-    #add logic so courses only appear once
     def index
         courses = Course.all
         render json: CourseSerializer.new(courses).to_serialized_json
     end
 
+    #add logic so courses only appear once
     def show
         course = Course.find_by(id: params[:id])
         if (course)
