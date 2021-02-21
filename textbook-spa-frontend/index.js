@@ -39,10 +39,10 @@ const renderSchools = (schoolObj) => {
     courses.classList.add('courses');
 
     schoolLi.innerText = schoolObj.name;
+    schoolLi.setAttribute('data-school-id', schoolObj.id);
+
     schoolLi.appendChild(schoolCourseInfo);
     schoolCourseInfo.appendChild(courses);
-    schoolLi.setAttribute('data-school-id', schoolObj.id);
-    
     schoolList.appendChild(schoolLi);
     createCourseForm(schoolObj);
 };
@@ -64,8 +64,11 @@ const loadCourses = () => {
     
     schoolList.addEventListener('click', (e) => {
         //console.log(e.target.dataset.schoolId);
-        const schoolCourseInfo = schoolList.querySelector('.school-course-info');
+        //const schoolCourseInfo = schoolList.querySelector('.school-course-info');
         const schoolId = e.target.dataset.schoolId;
+        //const courses = schoolList.querySelector(
+        //    `[data-school-id='${schoolId}']  div div`
+        //)
 
         //hide and seek courses and course form
         toggleView(schoolId);
@@ -88,7 +91,7 @@ const loadCourses = () => {
 
 //json course object from rails is rendered to text in an li
 const renderCourses = (courseObj) => {
-    //console.log(courseObj)
+    console.log(courseObj)
     const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']  div div`);
     //console.log(schoolUl);
     const courseLi = document.createElement('li');
@@ -156,7 +159,7 @@ const toggleView = (schoolId) => {
     )
     showCourse = !showCourse;
 
-    if (showCourse === true) {
+    if (showCourse) {
         schoolCourseInfo.style.display = "block"
       } else {
         schoolCourseInfo.style.display = "none"
@@ -164,3 +167,7 @@ const toggleView = (schoolId) => {
 
 
 }
+
+//display block/none needs to apply to individual school element, not to entire document, may need to add data-ids
+
+//maybe fetch courses with schools, but display:none
