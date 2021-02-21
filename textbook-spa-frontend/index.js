@@ -46,11 +46,10 @@ const renderSchools = (schoolObj) => {
 
 //create a form to post courses, form is attached to school
 const createCourseForm = (schoolObj) => {
-    //console.log(schoolObj);
 
     const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"] div`);
-    //console.log(schoolNode);
     const addCourseDiv = document.createElement('div');
+
     addCourseDiv.classList.add('add-course')
     addCourseDiv.innerHTML = "<h4>Add a Course</h4>"
     schoolNode.append(addCourseDiv);
@@ -63,11 +62,10 @@ const loadCourses = () => {
     schoolList.addEventListener('click', (e) => {
         console.log(e.target.dataset.schoolId);
         const schoolCourseInfo = schoolList.querySelector('.school-course-info');
-        
-        //hide and seek courses and course form
-        toggleView();
         const schoolId = e.target.dataset.schoolId;
 
+        //hide and seek courses and course form
+        toggleView(schoolId);
 
         fetch(COURSES_URL + `/${schoolId}`)
         .then(res => res.json())
@@ -149,8 +147,10 @@ const addNewSchool = (schoolName) => {
 };
 
 //toggle view of courses by clicking school
-const toggleView = () => {
-    const schoolCourseInfo = schoolList.querySelector('.school-course-info')
+const toggleView = (schoolId) => {
+    const schoolCourseInfo = schoolList.querySelector(
+        `[data-school-id='${schoolId}']  div`
+    )
     showCourse = !showCourse;
 
     if (showCourse === true) {
