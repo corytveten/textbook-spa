@@ -62,9 +62,10 @@ const loadCourses = () => {
     
     schoolList.addEventListener('click', (e) => {
         console.log(e.target.dataset.schoolId);
-        const schoolCourseInfo = schoolList.querySelector('.school-course-info')
+        const schoolCourseInfo = schoolList.querySelector('.school-course-info');
+        
+        //hide and seek courses and course form
         toggleView();
-        //schoolCourseInfo.style.display = 'block';
         const schoolId = e.target.dataset.schoolId;
 
 
