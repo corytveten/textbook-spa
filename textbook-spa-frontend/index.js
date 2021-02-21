@@ -27,17 +27,20 @@ const loadSchools = () => {
     })
 }
 
-//add school to the DOM
+//render school to the DOM
 const renderSchools = (schoolObj) => {
     //console.log(schoolObj);
     const schoolLi = document.createElement('li');
     const schoolCourseInfo = document.createElement('div');
+    const courses = document.createElement('div');
 
     schoolLi.classList.add('school');
     schoolCourseInfo.classList.add('school-course-info');
+    courses.classList.add('courses');
 
     schoolLi.innerText = schoolObj.name;
     schoolLi.appendChild(schoolCourseInfo);
+    schoolCourseInfo.appendChild(courses);
     schoolLi.setAttribute('data-school-id', schoolObj.id);
     
     schoolList.appendChild(schoolLi);
@@ -60,7 +63,7 @@ const loadCourses = () => {
     const schoolList = document.querySelector('.school-list');
     
     schoolList.addEventListener('click', (e) => {
-        console.log(e.target.dataset.schoolId);
+        //console.log(e.target.dataset.schoolId);
         const schoolCourseInfo = schoolList.querySelector('.school-course-info');
         const schoolId = e.target.dataset.schoolId;
 
@@ -86,8 +89,8 @@ const loadCourses = () => {
 //json course object from rails is rendered to text in an li
 const renderCourses = (courseObj) => {
     //console.log(courseObj)
-    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']  div`);
-    console.log(schoolUl);
+    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']  div div`);
+    //console.log(schoolUl);
     const courseLi = document.createElement('li');
     courseLi.classList.add('course');
     courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
