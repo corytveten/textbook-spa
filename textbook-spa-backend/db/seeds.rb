@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 school_a = School.create(name: 'University of Pittsburgh')
 school_b = School.create(name: 'Community College of Allegheny County')
 school_c = School.create(name: 'South University')
@@ -15,6 +16,7 @@ course_a = Course.create(code: 'PSY101', title: "General Psychology", school: sc
 course_b = Course.create(code: 'ENG101', title: "English Composition", school: school_b)
 course_c = Course.create(code: 'MAT1001', title: "Intermediate Algebra", school: school_c)
 course_d = Course.create(code: "BIO140", title: "Anatomy & Physiology I", school: school_d)
+course_e = Course.create(code: 'ENG1100', title: 'English Composition', school: school_c)
 
 
 textbook_a = Textbook.create(title: 'Psychology', author: "Brown", edition: "first", course: course_a)

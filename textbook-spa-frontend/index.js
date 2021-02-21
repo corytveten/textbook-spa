@@ -73,7 +73,8 @@ const loadCourses = () => {
         //hide and seek courses and course form
         toggleView(schoolId);
 
-        fetch(COURSES_URL + `/${schoolId}`)
+        //fetch(COURSES_URL + `/${schoolId}`)
+        fetch(COURSES_URL)
         .then(res => res.json())
         .then(json => {
             renderCourses(json);
@@ -90,13 +91,25 @@ const loadCourses = () => {
 
 
 //json course object from rails is rendered to text in an li
-const renderCourses = (courseObj) => {
-    console.log(courseObj)
-    const schoolUl = document.querySelector(`[data-school-id='${courseObj.id}']  div div`);
-    //console.log(schoolUl);
-    const courseLi = document.createElement('li');
-    courseLi.classList.add('course');
-    courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
+const renderCourses = (courseObjs) => {
+    //console.log(courseObjs)
+    courseObjs.forEach(courseObj => {
+        const nodeToAppendCourses = document.querySelector(`[data-school-id='${courseObj.school_id}']`);
+        console.log(courseObj)
+        console.log(nodeToAppendCourses);
+
+        const courseLi = document.createElement('li');
+    
+        courseLi.classList.add('course');
+    
+        courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
+        //console.log(courseLi)
+
+        nodeToAppendCourses.appendChild(courseLi);
+    })
+    
+    
+    
 
     //const loadTextbooks = (courseId) => {
         //console.log(courseId.textbooks[0]);
@@ -107,7 +120,6 @@ const renderCourses = (courseObj) => {
         //schoolUl.appendChild(textLi);
     //}
 
-    schoolUl.appendChild(courseLi);
     //loadTextbooks(courseObj);
     //displayCourses();
 
