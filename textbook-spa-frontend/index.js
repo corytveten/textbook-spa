@@ -6,7 +6,7 @@ const TEXTBOOKS_URL = `${BASE_URL}/textbooks`;
 const schoolList = document.querySelector('.school-list')
 const schoolForm = document.querySelector('#school-form')
 
-//let showCourse = false;
+let showCourse = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
@@ -32,8 +32,10 @@ const renderSchools = (schoolObj) => {
     //console.log(schoolObj);
     const schoolLi = document.createElement('li');
     const schoolCourseInfo = document.createElement('div');
+
     schoolLi.classList.add('school');
     schoolCourseInfo.classList.add('school-course-info');
+
     schoolLi.innerText = schoolObj.name;
     schoolLi.appendChild(schoolCourseInfo);
     schoolLi.setAttribute('data-school-id', schoolObj.id);
@@ -61,7 +63,8 @@ const loadCourses = () => {
     schoolList.addEventListener('click', (e) => {
         console.log(e.target.dataset.schoolId);
         const schoolCourseInfo = schoolList.querySelector('.school-course-info')
-        schoolCourseInfo.style.display = 'block';
+        toggleView();
+        //schoolCourseInfo.style.display = 'block';
         const schoolId = e.target.dataset.schoolId;
 
 
@@ -145,7 +148,7 @@ const addNewSchool = (schoolName) => {
 };
 
 //toggle view of courses by clicking school
-const toggleView = (showCourse) => {
+const toggleView = () => {
     const schoolCourseInfo = schoolList.querySelector('.school-course-info')
     showCourse = !showCourse;
 
