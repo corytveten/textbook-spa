@@ -58,16 +58,20 @@ const createCourseForm = (schoolObj) => {
     addCourseDiv.classList.add('add-course')
     addCourseDiv.innerHTML = 
         `<h4>Add a Course (${schoolObj.name})</h4></br>
-            <form id='course-form'>
+            <form course-form-data-id='${schoolObj.id}'>
                 <input type="text" name='code' value='' placeholder="Enter Course Code" id="course-code-input">
                 <input type='text' name='title' value='' placeholder='Enter Course Title' id='course-title-input'>
                 <input id='course-btn' type="submit" name="submit" value="Submit">
             </form>`
-    //createCourseForm();
+    
     schoolNode.append(addCourseDiv);
+    submitCourse();
 };
 
+//submit eventlistener for course
+const submitCourse = () => {
 
+}
 
 //event listener that fetches courses
 const loadCourses = () => {
@@ -91,9 +95,7 @@ const loadCourses = () => {
             alert('No courses listed for this school.')
             console.log(error)
         })
-
-        //hide and seek courses and course form
-        //toggleView();    
+  
     //}, {once: true});
 
        
@@ -120,8 +122,8 @@ const renderCourses = (courseObjs) => {
         nodeToAppendCourses.appendChild(courseLi);
     })
     
-    
-    toggleView();
+    //hide and seek courses and course form  
+    //toggleView();
 
     //const loadTextbooks = (courseId) => {
         //console.log(courseId.textbooks[0]);
@@ -180,21 +182,21 @@ const addNewSchool = (schoolName) => {
 const toggleView = () => {
     //console.log("Hello")
 
-    const schoolElems = document.querySelectorAll('.school');
-    //console.log(schoolElems);
+    const schoolElems = document.getElementsb('.school');
+    console.log(schoolElems);
+    
     
     schoolElems.forEach( schoolElem => {
-        
         schoolElem.addEventListener('click', (e) => {
-            console.log(schoolElem);
-            console.log(e.target)
-            //const schoolCourseInfo = e.target
-            const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
+            //console.log(schoolElem);
+            //console.log(e.target.dataset.schoolId)
+            const schoolCourseInfo = e.target.dataset.schoolId
+            //const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
             console.log(schoolCourseInfo);
             //const schoolCourseInfo = schoolElem.querySelector(
             //    `[data-school-id='${schoolId}']  div`
             //)
-            //console.log(schoolCourseInfo);
+            
             showCourse = !showCourse;
     
             if (!showCourse) {
@@ -211,3 +213,5 @@ const toggleView = () => {
 //display block/none needs to apply to individual school element, not to entire document, may need to add data-ids
 
 //maybe fetch courses with schools, but display:none
+
+//create close button for add course, replace toggle function.
