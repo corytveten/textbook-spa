@@ -175,10 +175,12 @@ const toggleView = () => {
     //console.log(schoolElems);
     
     schoolElems.forEach( schoolElem => {
+        
         schoolElem.addEventListener('click', (e) => {
             console.log(schoolElem);
             console.log(e.target)
-            const schoolCourseInfo = e.target.querySelector('.school-course-info')
+            //const schoolCourseInfo = e.target
+            const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
             console.log(schoolCourseInfo);
             //const schoolCourseInfo = schoolElem.querySelector(
             //    `[data-school-id='${schoolId}']  div`
