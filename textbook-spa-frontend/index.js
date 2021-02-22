@@ -188,7 +188,7 @@ const toggleView = () => {
             //console.log(schoolCourseInfo);
             showCourse = !showCourse;
     
-            if (showCourse) {
+            if (!showCourse) {
                 schoolCourseInfo.style.display = "none"
             } else {
                 schoolCourseInfo.style.display = "block"
