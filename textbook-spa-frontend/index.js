@@ -54,23 +54,36 @@ const createCourseForm = (schoolObj) => {
 
     const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"] div`);
     const addCourseDiv = document.createElement('div');
-
+    //console.log(schoolObj)
     addCourseDiv.classList.add('add-course')
     addCourseDiv.innerHTML = 
         `<h4>Add a Course (${schoolObj.name})</h4></br>
             <form course-form-data-id='${schoolObj.id}'>
-                <input type="text" name='code' value='' placeholder="Enter Course Code" id="course-code-input">
-                <input type='text' name='title' value='' placeholder='Enter Course Title' id='course-title-input'>
+                <input type="text" name='code' value='' placeholder="Enter Course Code" course-code-data-input-id="${schoolObj.id}">
+                <input type='text' name='title' value='' placeholder='Enter Course Title' course-title-data-input-id='${schoolObj.id}'>
                 <input id='course-btn' type="submit" name="submit" value="Submit">
             </form>`
     
     schoolNode.append(addCourseDiv);
-    submitCourse();
+    submitCourse(schoolObj.id);
 };
 
 //submit eventlistener for course
-const submitCourse = () => {
+const submitCourse = (schoolId) => {
+    const addCourseDiv = document.querySelector(`[course-form-data-id="${schoolId}"]`);
+    console.log(addCourseDiv)
+    
+    addCourseDiv.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const courseCodeInput = document.querySelector(`[course-code-data-input-id="${schoolId}"]`);
+        const courseTitleInput = document.querySelector(`[course-title-data-input-id="${schoolId}"]`);
 
+        console.log(courseCodeInput.value, courseTitleInput.value);
+        //addNewCourse(courseCodeInput.value, courseTitleInput.value);
+        courseCodeInput.value = '';
+        courseTitleInput.value = '';
+    })
+    
 }
 
 //event listener that fetches courses
