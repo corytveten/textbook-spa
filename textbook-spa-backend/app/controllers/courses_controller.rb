@@ -19,7 +19,11 @@ class CoursesController < ApplicationController
     def create
         #school = School.find_by(id: params[:course][:schoolId])
         course = Course.create(course_params)
-        render json: course        
+        if (course.save)
+            render json: course        
+        else
+            render :error
+        end       
     end
 
     private
