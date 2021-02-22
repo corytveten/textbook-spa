@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
     submitSchool();
     loadCourses();
+    //toggleView();
 });
 
 
@@ -45,6 +46,7 @@ const renderSchools = (schoolObj) => {
     schoolCourseInfo.appendChild(courses);
     schoolList.appendChild(schoolLi);
     createCourseForm(schoolObj);
+
 };
 
 //create a form to post courses, form is attached to school
@@ -62,18 +64,15 @@ const createCourseForm = (schoolObj) => {
 const loadCourses = () => {
     const schoolList = document.querySelector('.school-list');
     
-    schoolList.addEventListener('click', (e) => {
+    //schoolList.addEventListener('click', (e) => {
         //console.log(e.target.dataset.schoolId);
         //const schoolCourseInfo = schoolList.querySelector('.school-course-info');
-        const schoolId = e.target.dataset.schoolId;
+        //const schoolId = e.target.dataset.schoolId;
         //const courses = schoolList.querySelector(
         //    `[data-school-id='${schoolId}']  div div`
         //)
 
-        //hide and seek courses and course form
-        toggleView(schoolId);
 
-        //fetch(COURSES_URL + `/${schoolId}`)
         fetch(COURSES_URL)
         .then(res => res.json())
         .then(json => {
@@ -83,8 +82,12 @@ const loadCourses = () => {
             alert('No courses listed for this school.')
             console.log(error)
         })
-    });
 
+        //hide and seek courses and course form
+        //toggleView();    
+    //}, {once: true});
+
+       
 }
 
 
@@ -94,9 +97,9 @@ const loadCourses = () => {
 const renderCourses = (courseObjs) => {
     //console.log(courseObjs)
     courseObjs.forEach(courseObj => {
-        const nodeToAppendCourses = document.querySelector(`[data-school-id='${courseObj.school_id}']`);
-        console.log(courseObj)
-        console.log(nodeToAppendCourses);
+        const nodeToAppendCourses = document.querySelector(`[data-school-id='${courseObj.school_id}'] div div`);
+        //console.log(courseObj)
+        //console.log(nodeToAppendCourses);
 
         const courseLi = document.createElement('li');
     
@@ -109,7 +112,7 @@ const renderCourses = (courseObjs) => {
     })
     
     
-    
+    toggleView();
 
     //const loadTextbooks = (courseId) => {
         //console.log(courseId.textbooks[0]);
@@ -145,7 +148,7 @@ const submitSchool = () => {
 }
 
 const addNewSchool = (schoolName) => {
-    console.log(schoolName);
+    //console.log(schoolName);
     
     let schoolObj = {
         name: schoolName
@@ -165,19 +168,33 @@ const addNewSchool = (schoolName) => {
 };
 
 //toggle view of courses by clicking school
-const toggleView = (schoolId) => {
-    const schoolCourseInfo = schoolList.querySelector(
-        `[data-school-id='${schoolId}']  div`
-    )
-    showCourse = !showCourse;
+const toggleView = () => {
+    //console.log("Hello")
 
-    if (showCourse) {
-        schoolCourseInfo.style.display = "block"
-      } else {
-        schoolCourseInfo.style.display = "none"
-      }
-
-
+    const schoolElems = document.querySelectorAll('.school');
+    //console.log(schoolElems);
+    
+    schoolElems.forEach( schoolElem => {
+        schoolElem.addEventListener('click', (e) => {
+            console.log(schoolElem);
+            console.log(e.target)
+            const schoolCourseInfo = e.target.querySelector('.school-course-info')
+            console.log(schoolCourseInfo);
+            //const schoolCourseInfo = schoolElem.querySelector(
+            //    `[data-school-id='${schoolId}']  div`
+            //)
+            //console.log(schoolCourseInfo);
+            showCourse = !showCourse;
+    
+            if (showCourse) {
+                schoolCourseInfo.style.display = "none"
+            } else {
+                schoolCourseInfo.style.display = "block"
+            } 
+        })    
+    
+    })
+    
 }
 
 //display block/none needs to apply to individual school element, not to entire document, may need to add data-ids
