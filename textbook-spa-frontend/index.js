@@ -56,9 +56,12 @@ const createCourseForm = (schoolObj) => {
     const addCourseDiv = document.createElement('div');
 
     addCourseDiv.classList.add('add-course')
-    addCourseDiv.innerHTML = "<h4>Add a Course</h4>"
+    addCourseDiv.innerHTML = `<h4>Add a Course (${schoolObj.name})</h4>`
+    //createCourseForm();
     schoolNode.append(addCourseDiv);
-}
+};
+
+
 
 //event listener that fetches courses
 const loadCourses = () => {
