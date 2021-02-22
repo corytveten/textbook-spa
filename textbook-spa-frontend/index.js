@@ -56,7 +56,13 @@ const createCourseForm = (schoolObj) => {
     const addCourseDiv = document.createElement('div');
 
     addCourseDiv.classList.add('add-course')
-    addCourseDiv.innerHTML = `<h4>Add a Course (${schoolObj.name})</h4>`
+    addCourseDiv.innerHTML = 
+        `<h4>Add a Course (${schoolObj.name})</h4></br>
+            <form id='course-form'>
+                <input type="text" name='code' value='' placeholder="Enter Course Code" id="course-code-input">
+                <input type='text' name='title' value='' placeholder='Enter Course Title' id='course-title-input'>
+                <input id='course-btn' type="submit" name="submit" value="Submit">
+            </form>`
     //createCourseForm();
     schoolNode.append(addCourseDiv);
 };
