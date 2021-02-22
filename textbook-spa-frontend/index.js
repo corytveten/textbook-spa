@@ -78,12 +78,35 @@ const submitCourse = (schoolId) => {
         const courseCodeInput = document.querySelector(`[course-code-data-input-id="${schoolId}"]`);
         const courseTitleInput = document.querySelector(`[course-title-data-input-id="${schoolId}"]`);
 
-        console.log(courseCodeInput.value, courseTitleInput.value);
-        //addNewCourse(courseCodeInput.value, courseTitleInput.value);
+        //console.log(courseCodeInput.value, courseTitleInput.value);
+        addNewCourse(courseCodeInput.value, courseTitleInput.value, schoolId);
         courseCodeInput.value = '';
         courseTitleInput.value = '';
     })
     
+}
+
+const addNewCourse = (courseCode, courseTitle, schoolId) => {
+        console.log(courseCode, courseTitle, schoolId);
+    
+        let courseObj = {
+            code: courseCode,
+            title: courseTitle,
+            school: schoolId
+        }
+    
+        fetch(COURSES_URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(courseObj)
+            })
+            .then(resp => resp.json())
+            .then(json => console.log(json))
+            .catch(function(error) {
+                alert("Course already logged.")
+                //console.log(error.message);
+            })
+            
 }
 
 //event listener that fetches courses

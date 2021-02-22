@@ -16,4 +16,15 @@ class CoursesController < ApplicationController
         end
     end
 
+    def create
+        school = School.find_by(id: params[:schoolId])
+        course = Course.create(code: params[:code], title: params[:title], school: school)
+        render json: course        
+    end
+
+    #private
+    #def course_params
+    #    params.permit(:code, :title)
+    #end
+
 end
