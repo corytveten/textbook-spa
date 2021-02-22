@@ -92,7 +92,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
         let courseObj = {
             code: courseCode,
             title: courseTitle,
-            school: schoolId
+            'school_id': schoolId
         }
     
         fetch(COURSES_URL, {
