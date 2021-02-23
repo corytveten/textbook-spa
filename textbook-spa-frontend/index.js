@@ -273,6 +273,7 @@ const openView = () => {
             console.log(schoolElem)
             //const schoolCourseInfo = e.target;
             const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
+            
             schoolCourseInfo.style.display = "block";
 
             const hideSection = schoolElem.querySelector('.hide-section')
