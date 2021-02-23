@@ -53,7 +53,7 @@ const createCourseForm = (schoolObj) => {
 
     const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"] div`);
     const addCourseDiv = document.createElement('div');
-    //console.log(schoolObj)
+    //console.log(schoolNode)
     addCourseDiv.classList.add('add-course')
     addCourseDiv.innerHTML = 
         `<h4>Add a Course (${schoolObj.name})</h4>
@@ -64,13 +64,34 @@ const createCourseForm = (schoolObj) => {
             </form>`
     
     schoolNode.append(addCourseDiv);
+    appendHideSection(schoolNode);
     submitCourse(schoolObj.id);
 };
+
+const appendHideSection = (schoolNode) => {
+    //const schoolCourseInfos = document.querySelectorAll('.school-course-info');
+    //console.log(schoolNode);
+    const hideSection = document.createElement('p');
+    hideSection.innerText = "(Hide Section)";
+    hideSection.classList.add('hide-section');
+    schoolNode.appendChild(hideSection);
+    
+};
+
+const clickToHide = (hideSection) => {
+    //console.log(hideSection);
+    hideSection.addEventListener('click', (e) => {
+        e.preventDefault;
+        console.log(e.target.parentNode);
+        const schoolCourseInfo = e.target.parentNode;
+        schoolCourseInfo.style.display = "none";
+    })
+}
 
 //submit eventlistener for course
 const submitCourse = (schoolId) => {
     const addCourseDiv = document.querySelector(`[course-form-data-id="${schoolId}"]`);
-    console.log(addCourseDiv)
+    //console.log(addCourseDiv)
     
     addCourseDiv.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -249,19 +270,26 @@ const openView = () => {
     console.log(schoolElems);
     schoolElems.forEach( schoolElem => {
         schoolElem.addEventListener('click', (e) => {
-            console.log(e.target)
+            console.log(schoolElem)
             //const schoolCourseInfo = e.target;
             const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
             schoolCourseInfo.style.display = "block";
+
+            const hideSection = schoolElem.querySelector('.hide-section')
+            clickToHide(hideSection)
         })
+        //const hideSection = 
+        //clickToHide(hideSection);
     })
+    
+
 }
 
 //display block/none needs to apply to individual school element, not to entire document, may need to add data-ids
 
 //maybe fetch courses with schools, but display:none
 
-//create close button for add course, replace toggle function.
+//create close Section for add course, replace toggle function.
 
 //README
 
