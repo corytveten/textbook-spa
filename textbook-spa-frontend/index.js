@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
     submitSchool();
     loadCourses();
-    //toggleView();
 });
 
 
@@ -57,7 +56,7 @@ const createCourseForm = (schoolObj) => {
     //console.log(schoolObj)
     addCourseDiv.classList.add('add-course')
     addCourseDiv.innerHTML = 
-        `<h4>Add a Course (${schoolObj.name})</h4></br>
+        `<h4>Add a Course (${schoolObj.name})</h4>
             <form course-form-data-id='${schoolObj.id}'>
                 <input type="text" name='code' value='' placeholder="Enter Course Code" course-code-data-input-id="${schoolObj.id}">
                 <input type='text' name='title' value='' placeholder='Enter Course Title' course-title-data-input-id='${schoolObj.id}'>
@@ -133,7 +132,7 @@ const loadCourses = () => {
         })
   
     //}, {once: true});
-
+        
        
 }
 
@@ -159,7 +158,6 @@ const renderCourses = (courseObjs) => {
     })
     
     //hide and seek courses and course form  
-    //toggleView();
 
     //const loadTextbooks = (courseId) => {
         //console.log(courseId.textbooks[0]);
@@ -172,7 +170,7 @@ const renderCourses = (courseObjs) => {
 
     //loadTextbooks(courseObj);
     //displayCourses();
-
+    openView();
 }
 
 //??? is this a redundant function???
@@ -218,7 +216,7 @@ const addNewSchool = (schoolName) => {
 const toggleView = () => {
     //console.log("Hello")
 
-    const schoolElems = document.getElementsb('.school');
+    const schoolElems = document.getElements('.school');
     console.log(schoolElems);
     
     
@@ -246,8 +244,24 @@ const toggleView = () => {
     
 }
 
+const openView = () => {
+    const schoolElems = document.querySelectorAll('.school');
+    console.log(schoolElems);
+    schoolElems.forEach( schoolElem => {
+        schoolElem.addEventListener('click', (e) => {
+            console.log(e.target)
+            //const schoolCourseInfo = e.target;
+            const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
+            schoolCourseInfo.style.display = "block";
+        })
+    })
+}
+
 //display block/none needs to apply to individual school element, not to entire document, may need to add data-ids
 
 //maybe fetch courses with schools, but display:none
 
 //create close button for add course, replace toggle function.
+
+//README
+

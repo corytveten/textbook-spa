@@ -40,7 +40,7 @@ body {
 }
 
 .add-course {
-  
+  padding-bottom: 20px;
 }
 
 .add-course h4 {
@@ -48,5 +48,5 @@ body {
 }
 
 .school-course-info {
-  display: block;
+  display: none;
 }
