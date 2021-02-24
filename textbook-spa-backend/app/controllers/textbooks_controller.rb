@@ -12,4 +12,8 @@ class TextbooksController < ApplicationController
         render json: TextbookSerializer.new(textbook).to_serialized_json
     end
 
+    def create
+
+    end
+
 end

@@ -193,17 +193,38 @@ const loadTextbooks = () => {
 const renderTextbooks = (textbookObjs) => {
 
     textbookObjs.forEach( textbookObj => {
-        console.log(textbookObj);
+        //console.log(textbookObj);
         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
-        console.log(nodeToAppendTextbooks);
+        //console.log(nodeToAppendTextbooks);
         const textbookLi = document.createElement('li');
 
         textbookLi.classList.add('textbook');
         textbookLi.innerText = `Textbook: ${textbookObj.title}, Author: ${textbookObj.author}`
 
         nodeToAppendTextbooks.appendChild(textbookLi);
+        createTextbookForm(textbookObj, nodeToAppendTextbooks)
 
     });
+}
+
+const createTextbookForm = (textbookObj) => {
+    //console.log(textbookObj)
+    const courseNode = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
+    console.log(courseNode);
+    const addTextbookDiv = document.createElement('div');
+
+    addTextbookDiv.classList.add('add-text');
+    addTextbookDiv.innerHTML =
+        `<h4>Add a Textbook</h4>
+            <form textbook-form-data-id='${textbookObj.course_id}'>
+                <input type="text" name='title' value='' placeholder="Enter Textbook Title" textbook-title-data-input-id="${textbookObj.course_id}">
+                <input type='text' name='author' value='' placeholder='Enter Author Last Name' textbook-author-data-input-id='${textbookObj.course_id}'>
+                <input id='textbook-btn' type="submit" name="submit" value="Submit">
+            </form>`
+
+    courseNode.append(addTextbookDiv);
+    //submitTextbook(textbookObj.course_id)
+    
 }
 
 const submitSchool = () => {
@@ -335,3 +356,9 @@ const clickToHide = (hideSection) => {
 //README
 
 //change text when elements are clicked on, such as <school name> + "click a course to see textbooks"
+
+//TEXTBOOK FORM NEEDS TO BE ATTACHED TO ALL COURSES
+
+//ADD TOGGLE FOR TEXTBOOK INFO
+
+//ADD POST FETCH TO TEXTBOOK FORM
