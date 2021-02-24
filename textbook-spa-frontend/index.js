@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
     submitSchool();
     loadCourses();
+    loadTextbooks();
 });
 
 
@@ -158,8 +159,6 @@ const renderCourses = (courseObjs) => {
     //console.log(courseObjs)
     courseObjs.forEach(courseObj => {
         const nodeToAppendCourses = document.querySelector(`[data-school-id='${courseObj.school_id}'] div div`);
-        //console.log(courseObj)
-        //console.log(nodeToAppendCourses);
 
         const courseLi = document.createElement('li');
         const courseSpan = document.createElement('span');
@@ -191,16 +190,14 @@ const renderCourses = (courseObjs) => {
     toggleView();
 }
 
-/*
-//??? is this a redundant function???
-const displayCourses = () => {
-    const schoolElems = document.querySelector('.school');
-    console.log(schoolElems);
-    schoolElems.addEventListener('click', (e) => {
-        console.log(e.target.dataset.schoolId);
+const loadTextbooks = () => {
+
+    fetch(TEXTBOOKS_URL)
+    .then(res => res.json())
+    .then(json => {
+        console.log(json);
     })
 }
-*/
 
 const submitSchool = () => {
     schoolForm.addEventListener('submit', (e) => {
@@ -299,6 +296,16 @@ const toggleView = () => {
     
 //};
 
+/*
+//??? is this a redundant function???
+const displayCourses = () => {
+    const schoolElems = document.querySelector('.school');
+    console.log(schoolElems);
+    schoolElems.addEventListener('click', (e) => {
+        console.log(e.target.dataset.schoolId);
+    })
+}
+*/
 
 //display block/none needs to apply to individual school element, not to entire document, may need to add data-ids
 
@@ -308,3 +315,4 @@ const toggleView = () => {
 
 //README
 
+//change text when elements are clicked on, such as <school name> + "click a course to see textbooks"
