@@ -67,19 +67,19 @@ const createCourseForm = (schoolObj) => {
             </form>`
     
     schoolNode.append(addCourseDiv);
-    appendHideSection(schoolNode);
+    //appendHideSection(schoolNode);
     submitCourse(schoolObj.id);
 };
 
-const appendHideSection = (schoolNode) => {
+//const appendHideSection = (schoolNode) => {
     //const schoolCourseInfos = document.querySelectorAll('.school-course-info');
     //console.log(schoolNode);
-    const hideSection = document.createElement('p');
-    hideSection.innerText = "(Hide Section)";
-    hideSection.classList.add('hide-section');
-    schoolNode.appendChild(hideSection);
+    //const hideSection = document.createElement('p');
+    //hideSection.innerText = "(Hide Section)";
+    //hideSection.classList.add('hide-section');
+    //schoolNode.appendChild(hideSection);
     
-};
+//};
 
 const clickToHide = (hideSection) => {
     //console.log(hideSection);
@@ -245,6 +245,9 @@ const toggleView = () => {
     
     
     schoolNameSpans.forEach( schoolName => {
+
+        let showCourse = false;
+        
         schoolName.addEventListener('click', (e) => {
             //console.log(schoolElem);
             console.log(e.target)
