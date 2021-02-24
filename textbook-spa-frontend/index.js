@@ -6,7 +6,7 @@ const TEXTBOOKS_URL = `${BASE_URL}/textbooks`;
 const schoolList = document.querySelector('.school-list')
 const schoolForm = document.querySelector('#school-form')
 
-let showCourse = false;
+//let showCourse = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
@@ -31,16 +31,19 @@ const loadSchools = () => {
 const renderSchools = (schoolObj) => {
     //console.log(schoolObj);
     const schoolLi = document.createElement('li');
+    const schoolNameSpan = document.createElement('span');
     const schoolCourseInfo = document.createElement('div');
     const courses = document.createElement('div');
 
     schoolLi.classList.add('school');
+    schoolNameSpan.classList.add('school-name-span');
     schoolCourseInfo.classList.add('school-course-info');
     courses.classList.add('courses');
 
-    schoolLi.innerText = schoolObj.name;
+    schoolNameSpan.innerText = schoolObj.name;
     schoolLi.setAttribute('data-school-id', schoolObj.id);
 
+    schoolLi.appendChild(schoolNameSpan);
     schoolLi.appendChild(schoolCourseInfo);
     schoolCourseInfo.appendChild(courses);
     schoolList.appendChild(schoolLi);
@@ -191,7 +194,7 @@ const renderCourses = (courseObjs) => {
 
     //loadTextbooks(courseObj);
     //displayCourses();
-    openView();
+    toggleView();
 }
 
 //??? is this a redundant function???
@@ -237,15 +240,15 @@ const addNewSchool = (schoolName) => {
 const toggleView = () => {
     //console.log("Hello")
 
-    const schoolElems = document.getElements('.school');
-    console.log(schoolElems);
+    const schoolNameSpans = document.querySelectorAll('.school-name-span');
+    console.log(schoolNameSpans);
     
     
-    schoolElems.forEach( schoolElem => {
-        schoolElem.addEventListener('click', (e) => {
+    schoolNameSpans.forEach( schoolName => {
+        schoolName.addEventListener('click', (e) => {
             //console.log(schoolElem);
-            //console.log(e.target.dataset.schoolId)
-            const schoolCourseInfo = e.target.dataset.schoolId
+            console.log(e.target)
+            const schoolCourseInfo = e.target.nextElementSibling
             //const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
             console.log(schoolCourseInfo);
             //const schoolCourseInfo = schoolElem.querySelector(
@@ -272,7 +275,7 @@ const openView = () => {
         schoolElem.addEventListener('click', (e) => {
             console.log(schoolElem)
             //const schoolCourseInfo = e.target;
-            const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
+            const schoolCourseInfo = schoolElem.querySelector('.school-course-info');
             
             schoolCourseInfo.style.display = "block";
 
@@ -285,6 +288,7 @@ const openView = () => {
     
 
 }
+
 
 //display block/none needs to apply to individual school element, not to entire document, may need to add data-ids
 
