@@ -21,6 +21,10 @@ body {
   padding: 0;
 }
 
+.school{
+  padding-top: 5px
+}
+
 .course {
   margin-left: 25px; 
   padding-left: 0;
@@ -41,13 +45,22 @@ body {
 
 .add-course {
   padding-bottom: 20px;
+  margin-right: 50px;
+  background-color: #624a72;
+  color: white;
+  /*outline: red solid 1px;
+  */
 }
 
 .add-course h4 {
-
+  padding-bottom: 0px;
 }
 
 .school-course-info {
   display: none;
   
+}
+
+.school-name-span {
+  cursor: pointer;
 }
