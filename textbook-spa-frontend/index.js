@@ -196,7 +196,14 @@ const renderTextbooks = (textbookObjs) => {
         console.log(textbookObj);
         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
         console.log(nodeToAppendTextbooks);
-    })
+        const textbookLi = document.createElement('li');
+
+        textbookLi.classList.add('textbook');
+        textbookLi.innerText = `Textbook: ${textbookObj.title}, Author: ${textbookObj.author}`
+
+        nodeToAppendTextbooks.appendChild(textbookLi);
+
+    });
 }
 
 const submitSchool = () => {
