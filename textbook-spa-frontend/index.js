@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
     submitSchool();
     loadCourses();
-    loadTextbooks();
+    //loadTextbooks();
 });
 
 
@@ -71,16 +71,6 @@ const createCourseForm = (schoolObj) => {
     //appendHideSection(schoolNode);
     submitCourse(schoolObj.id);
 };
-
-const clickToHide = (hideSection) => {
-    //console.log(hideSection);
-    hideSection.addEventListener('click', (e) => {
-        e.preventDefault;
-        console.log(e.target.parentNode);
-        const schoolCourseInfo = e.target.parentNode;
-        schoolCourseInfo.style.display = "none";
-    })
-}
 
 //submit eventlistener for course
 const submitCourse = (schoolId) => {
@@ -188,6 +178,7 @@ const renderCourses = (courseObjs) => {
 
     //hide and seek courses and course form  
     toggleView();
+    loadTextbooks();
 }
 
 const loadTextbooks = () => {
@@ -195,7 +186,16 @@ const loadTextbooks = () => {
     fetch(TEXTBOOKS_URL)
     .then(res => res.json())
     .then(json => {
-        console.log(json);
+        renderTextbooks(json);
+    })
+};
+
+const renderTextbooks = (textbookObjs) => {
+
+    textbookObjs.forEach( textbookObj => {
+        console.log(textbookObj);
+        const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
+        console.log(nodeToAppendTextbooks);
     })
 }
 
@@ -303,6 +303,18 @@ const displayCourses = () => {
     console.log(schoolElems);
     schoolElems.addEventListener('click', (e) => {
         console.log(e.target.dataset.schoolId);
+    })
+}
+*/
+
+/*
+const clickToHide = (hideSection) => {
+    //console.log(hideSection);
+    hideSection.addEventListener('click', (e) => {
+        e.preventDefault;
+        console.log(e.target.parentNode);
+        const schoolCourseInfo = e.target.parentNode;
+        schoolCourseInfo.style.display = "none";
     })
 }
 */
