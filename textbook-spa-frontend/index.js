@@ -162,13 +162,17 @@ const renderCourses = (courseObjs) => {
         //console.log(nodeToAppendCourses);
 
         const courseLi = document.createElement('li');
+        const courseSpan = document.createElement('span');
     
         courseLi.classList.add('course');
+        courseSpan.classList.add('course-span');
+        courseLi.setAttribute('course-data-id', courseObj.id);
     
-        courseLi.innerText = `${courseObj.code} - ${courseObj.title}`;
+        courseSpan.innerText = `${courseObj.code} - ${courseObj.title}`;
         //console.log(courseLi)
 
         nodeToAppendCourses.appendChild(courseLi);
+        courseLi.appendChild(courseSpan);
     })
 
     //const loadTextbooks = (courseId) => {
