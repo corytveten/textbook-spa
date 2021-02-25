@@ -1,10 +1,11 @@
 class Course {
     constructor(courseData) {
+        //debugger;
         this.id = courseData.id;
         this.code = courseData.code;
         this.title = courseData.title;
         this.schoolId = courseData.school_id;
-        this.schoolName = courseData.school.name;
+        //this.schoolName = courseData.school.name;
     }
 
 

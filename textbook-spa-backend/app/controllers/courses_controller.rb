@@ -9,21 +9,21 @@ class CoursesController < ApplicationController
     #add logic so courses only appear once
     def show
         course = Course.find_by(id: params[:id])
-        if (course)
+        #if (course)
             render json: CourseSerializer.new(course).to_serialized_json
-        else
-            render :error #{message: "no courses for school"}
-        end
+        #else
+        #    render :error #{message: "no courses for school"}
+        #end
     end
 
     def create
         #school = School.find_by(id: params[:course][:schoolId])
         course = Course.create(course_params)
-        if (course.save)
+        #if (course.save)
             render json: course        
-        else
-            render :error
-        end       
+        #else
+        #    render :error
+        #end       
     end
 
     private

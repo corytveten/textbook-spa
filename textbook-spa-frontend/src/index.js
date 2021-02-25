@@ -114,11 +114,14 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
             body: JSON.stringify(courseConfigObj)
             })
             .then(resp => resp.json())
-            .then(json => console.log(json))
-            .catch(function(error) {
-                alert("Course already logged.")
-                //console.log(error.message);
+            .then(json => {
+                const course = new Course(json);
+                course.createCourseLi();
             })
+            //.catch(function(error) {
+            //    alert("Course already logged.")
+                //console.log(error.message);
+            //})
             
 }
 
@@ -270,6 +273,7 @@ const addNewSchool = (schoolName) => {
         .then(json => {
             const school = new School(json);
             school.createSchoolLi();
+            school.createCourseForm();
         })
         .catch(function(error) {
             alert("School already exists.")
