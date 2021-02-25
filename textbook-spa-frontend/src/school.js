@@ -1,6 +1,7 @@
 
 class School {
     constructor(schoolData) {
+        //debugger;
         this.id = schoolData.id;
         this.name = schoolData.name;
         this.courses = schoolData.courses;

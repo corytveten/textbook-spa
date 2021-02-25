@@ -267,12 +267,14 @@ const addNewSchool = (schoolName) => {
         body: JSON.stringify(schoolObj)
         })
         .then(resp => resp.json())
-        .then(json => console.log(json))
+        .then(json => {
+            const school = new School(json);
+            school.createSchoolLi();
+        })
         .catch(function(error) {
             alert("School already exists.")
             //console.log(error.message);
         })
-    
     
 };
 
