@@ -31,6 +31,24 @@ class School {
         schoolList.appendChild(schoolLi);
         
     }
+
+    createCourseForm() {
+        const schoolNode = document.querySelector(`[data-school-id="${this.id}"] div`);
+    const addCourseDiv = document.createElement('div');
+    //console.log(schoolNode)
+    addCourseDiv.classList.add('add-course')
+    addCourseDiv.innerHTML = 
+        `<h4>Add a Course (${this.name})</h4>
+            <form course-form-data-id='${this.id}'>
+                <input type="text" name='code' value='' placeholder="Enter Course Code" course-code-data-input-id="${this.id}">
+                <input type='text' name='title' value='' placeholder='Enter Course Title' course-title-data-input-id='${this.id}'>
+                <input id='course-btn' type="submit" name="submit" value="Submit">
+            </form>`
+    
+    schoolNode.append(addCourseDiv);
+    //appendHideSection(schoolNode);
+    submitCourse(this.id);
+    }
     
 
 

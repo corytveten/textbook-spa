@@ -55,11 +55,12 @@ const renderSchool = (schoolObj) => {
     schoolList.appendChild(schoolLi);
     */
 
-    createCourseForm(school);
-
+    //createCourseForm(school);
+    school.createCourseForm();
 };
 
 //create a form to post courses, form is attached to school
+/*
 const createCourseForm = (schoolObj) => {
 
     const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"] div`);
@@ -78,6 +79,7 @@ const createCourseForm = (schoolObj) => {
     //appendHideSection(schoolNode);
     submitCourse(schoolObj.id);
 };
+*/
 
 //submit eventlistener for course
 const submitCourse = (schoolId) => {
