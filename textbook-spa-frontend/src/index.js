@@ -31,7 +31,7 @@ const loadSchools = () => {
 //render school to the DOM
 const renderSchool = (schoolObj) => {
     const school = new School(schoolObj);
-    console.log(school);
+    //console.log(school);
  
     school.createSchoolLi();
     
@@ -99,10 +99,9 @@ const submitCourse = (schoolId) => {
 
 const addNewCourse = (courseCode, courseTitle, schoolId) => {
         console.log(courseCode, courseTitle, schoolId);
-        
-        
-        let courseObj = {
-            code: courseCode,
+
+        let courseConfigObj = {
+           code: courseCode,
             title: courseTitle,
             'school_id': schoolId
         }
@@ -110,7 +109,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
         fetch(COURSES_URL, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(courseObj)
+            body: JSON.stringify(courseConfigObj)
             })
             .then(resp => resp.json())
             .then(json => console.log(json))
@@ -156,6 +155,13 @@ const loadCourses = () => {
 const renderCourses = (courseObjs) => {
     //console.log(courseObjs)
     courseObjs.forEach(courseObj => {
+
+        const course = new Course(courseObj);
+        //console.log(courseObj)
+        //console.log(course)
+
+        course.createCourseLi();
+        /*
         const nodeToAppendCourses = document.querySelector(`[data-school-id='${courseObj.school_id}'] div div`);
 
         const courseLi = document.createElement('li');
@@ -170,6 +176,7 @@ const renderCourses = (courseObjs) => {
 
         nodeToAppendCourses.appendChild(courseLi);
         courseLi.appendChild(courseSpan);
+        */
     })
 
     //const loadTextbooks = (courseId) => {
