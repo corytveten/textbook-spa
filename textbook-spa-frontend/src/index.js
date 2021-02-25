@@ -23,16 +23,19 @@ const loadSchools = () => {
     .then(json => {
         json.forEach(schoolObj => {
 
-            renderSchools(schoolObj)
+            renderSchool(schoolObj)
         })
     })
 }
 
 //render school to the DOM
-const renderSchools = (schoolObj) => {
-    //console.log(schoolObj);
+const renderSchool = (schoolObj) => {
     const school = new School(schoolObj);
     console.log(school);
+ 
+    school.createSchoolLi();
+    
+    /*
     const schoolLi = document.createElement('li');
     const schoolNameSpan = document.createElement('span');
     const schoolCourseInfo = document.createElement('div');
@@ -43,14 +46,16 @@ const renderSchools = (schoolObj) => {
     schoolCourseInfo.classList.add('school-course-info');
     courses.classList.add('courses');
 
-    schoolNameSpan.innerText = schoolObj.name;
-    schoolLi.setAttribute('data-school-id', schoolObj.id);
+    schoolNameSpan.innerText = school.name;
+    schoolLi.setAttribute('data-school-id', school.id);
 
     schoolLi.appendChild(schoolNameSpan);
     schoolLi.appendChild(schoolCourseInfo);
     schoolCourseInfo.appendChild(courses);
     schoolList.appendChild(schoolLi);
-    createCourseForm(schoolObj);
+    */
+
+    createCourseForm(school);
 
 };
 
@@ -94,7 +99,8 @@ const submitCourse = (schoolId) => {
 
 const addNewCourse = (courseCode, courseTitle, schoolId) => {
         console.log(courseCode, courseTitle, schoolId);
-    
+        
+        
         let courseObj = {
             code: courseCode,
             title: courseTitle,
