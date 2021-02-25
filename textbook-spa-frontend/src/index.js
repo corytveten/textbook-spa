@@ -272,6 +272,8 @@ const addNewSchool = (schoolName) => {
             alert("School already exists.")
             //console.log(error.message);
         })
+    
+    
 };
 
 //toggle view of courses by clicking school
