@@ -31,6 +31,8 @@ const loadSchools = () => {
 //render school to the DOM
 const renderSchools = (schoolObj) => {
     //console.log(schoolObj);
+    const school = new School(schoolObj);
+    console.log(school);
     const schoolLi = document.createElement('li');
     const schoolNameSpan = document.createElement('span');
     const schoolCourseInfo = document.createElement('div');
