@@ -19,6 +19,11 @@ class SchoolsController < ApplicationController
         end
     end
 
+    def destroy
+        
+        
+    end
+
     private
     def school_params
         params.permit(:name)

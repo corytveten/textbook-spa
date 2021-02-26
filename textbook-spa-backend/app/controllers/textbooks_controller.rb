@@ -16,4 +16,8 @@ class TextbooksController < ApplicationController
 
     end
 
+    def destroy
+        
+    end
+
 end
