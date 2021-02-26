@@ -297,7 +297,8 @@ const toggleView = () => {
         schoolName.addEventListener('click', (e) => {
             //console.log(schoolElem);
             console.log(e.target)
-            const schoolCourseInfo = e.target.nextElementSibling
+            const deleteButton = e.target.nextElementSibling
+            const schoolCourseInfo = e.target.nextElementSibling.nextElementSibling
             //const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
             console.log(schoolCourseInfo);
             //const schoolCourseInfo = schoolElem.querySelector(
@@ -307,9 +308,11 @@ const toggleView = () => {
             showCourse = !showCourse;
     
             if (!showCourse) {
-                schoolCourseInfo.style.display = "none"
+                schoolCourseInfo.style.display = "none";
+                deleteButton.style.display = "none"
             } else {
-                schoolCourseInfo.style.display = "block"
+                schoolCourseInfo.style.display = "block";
+                deleteButton.style.display = "block"
             } 
         })    
     

@@ -17,16 +17,20 @@ class School {
         const schoolNameSpan = document.createElement('span');
         const schoolCourseInfo = document.createElement('div');
         const courses = document.createElement('div');
+        const deleteSchool = document.createElement('span')
     
         schoolLi.classList.add('school');
         schoolNameSpan.classList.add('school-name-span');
         schoolCourseInfo.classList.add('school-course-info');
         courses.classList.add('courses');
+        deleteSchool.classList.add('delete-school-btn');
     
         schoolNameSpan.innerText = this.name;
+        deleteSchool.innerHTML = '<button type=button>Remove School</button>'
         schoolLi.setAttribute('data-school-id', this.id);
     
         schoolLi.appendChild(schoolNameSpan);
+        schoolLi.appendChild(deleteSchool);
         schoolLi.appendChild(schoolCourseInfo);
         schoolCourseInfo.appendChild(courses);
         schoolList.appendChild(schoolLi);

@@ -75,3 +75,9 @@ body {
   background-color: #624a72;
   color: white;
 }
+
+.delete-school-btn {
+  float: right;
+  margin-right: 450px;
+  display: none;
+}

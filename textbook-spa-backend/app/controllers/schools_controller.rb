@@ -20,8 +20,9 @@ class SchoolsController < ApplicationController
     end
 
     def destroy
-        
-        
+        school = School.find_by(id: params[:id])
+        school.destroy
+        #render json: school
     end
 
     private
