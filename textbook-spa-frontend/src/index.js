@@ -199,6 +199,7 @@ const renderCourses = (courseObjs) => {
     //hide and seek courses and course form  
     toggleView();
     loadTextbooks();
+    deleteSchool();
 }
 
 const loadTextbooks = () => {
@@ -316,6 +317,17 @@ const toggleView = () => {
             } 
         })    
     
+    })
+    
+}
+
+const deleteSchool = () => {
+    const deleteButtons = document.querySelectorAll('.delete-school-btn');
+    deleteButtons.forEach(deleteButton => {
+        deleteButton.addEventListener('click', (e) => {
+            e.preventDefault;
+            console.log(e.target);
+        })
     })
     
 }
