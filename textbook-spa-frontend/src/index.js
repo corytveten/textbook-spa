@@ -326,7 +326,18 @@ const deleteSchool = () => {
     deleteButtons.forEach(deleteButton => {
         deleteButton.addEventListener('click', (e) => {
             e.preventDefault;
-            console.log(e.target);
+            console.log(e.target.parentElement.parentElement.dataset.schoolId);
+            const schoolId = e.target.parentElement.parentElement.dataset.schoolId;
+            fetch(`${SCHOOLS_URL}/${schoolId}`, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
+            .catch( error => {
+                console.log(error.message);
+            })
         })
     })
     
