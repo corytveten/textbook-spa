@@ -117,6 +117,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
             .then(json => {
                 const course = new Course(json);
                 course.createCourseLi();
+                //course.createTextbookForm();
             })
             //.catch(function(error) {
             //    alert("Course already logged.")
@@ -163,9 +164,10 @@ const renderCourses = (courseObjs) => {
 
         const course = new Course(courseObj);
         //console.log(courseObj)
-        //console.log(course)
+        console.log(course)
 
         course.createCourseLi();
+        course.createTextbookForm();
         /*
         const nodeToAppendCourses = document.querySelector(`[data-school-id='${courseObj.school_id}'] div div`);
 
@@ -223,11 +225,12 @@ const renderTextbooks = (textbookObjs) => {
         textbookLi.innerText = `Textbook: ${textbookObj.title}, Author: ${textbookObj.author}`
 
         nodeToAppendTextbooks.appendChild(textbookLi);
-        createTextbookForm(textbookObj, nodeToAppendTextbooks)
+        //createTextbookForm(textbookObj, nodeToAppendTextbooks)
 
     });
 }
 
+/*
 const createTextbookForm = (textbookObj) => {
     //console.log(textbookObj)
     const courseNode = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
@@ -247,6 +250,7 @@ const createTextbookForm = (textbookObj) => {
     //submitTextbook(textbookObj.course_id)
     
 }
+*/
 
 const submitSchool = () => {
     schoolForm.addEventListener('submit', (e) => {
