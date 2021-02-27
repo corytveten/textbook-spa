@@ -19,12 +19,6 @@ class SchoolsController < ApplicationController
         end
     end
 
-    def destroy
-        school = School.find_by(id: params[:id])
-        school.destroy
-        render json: {schoolId: school.id}
-    end
-
     private
     def school_params
         params.permit(:name)

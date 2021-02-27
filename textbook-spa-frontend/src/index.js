@@ -199,7 +199,7 @@ const renderCourses = (courseObjs) => {
     //hide and seek courses and course form  
     toggleView();
     loadTextbooks();
-    deleteSchool();
+    //deleteSchool();
 }
 
 const loadTextbooks = () => {
@@ -321,6 +321,7 @@ const toggleView = () => {
     
 }
 
+/*
 const deleteSchool = () => {
     const deleteButtons = document.querySelectorAll('.delete-school-btn');
     deleteButtons.forEach(deleteButton => {
@@ -342,6 +343,7 @@ const deleteSchool = () => {
     })
     
 }
+*/
 
 /*const openView = () => {
     const schoolElems = document.querySelectorAll('.school');
