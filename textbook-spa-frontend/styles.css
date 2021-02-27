@@ -45,7 +45,7 @@ body {
 
 .add-course {
   padding-bottom: 20px;
-  margin-right: 50px;
+  margin-right: 880px;
   background-color: #624a72;
   color: white;
   /*outline: red solid 1px;
@@ -71,7 +71,7 @@ body {
 
 .add-text {
   padding-bottom: 20px;
-  margin-right: 150px;
+  margin-right: 850px;
   background-color: #624a72;
   color: white;
 }
