@@ -160,6 +160,7 @@ const renderCourses = (courseObjs) => {
     loadTextbooks();
     //deleteSchool();
     toggleTextbookView();
+    //deleteTextbook
 }
 
 const loadTextbooks = () => {

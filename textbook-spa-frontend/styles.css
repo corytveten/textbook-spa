@@ -86,3 +86,7 @@ body {
 .course-span {
   cursor: pointer;
 }
+
+.delete-textbook-button {
+  margin-left: 100px;
+}
