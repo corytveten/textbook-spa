@@ -263,6 +263,8 @@ const addNewTextbook = (title, author, courseId) => {
     .then(resp => resp.json())
     .then(json => {
         console.log(json);
+        let text = new Textbook(json);
+        text.renderTextbook();
     })
 }
 
