@@ -217,14 +217,15 @@ const renderTextbooks = (textbookObjs) => {
 
     textbookObjs.forEach( textbookObj => {
         //console.log(textbookObj);
-        const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
+        const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${textbookObj.course_id}'] .textbooks`);
         //console.log(nodeToAppendTextbooks);
         const textbookLi = document.createElement('li');
 
         textbookLi.classList.add('textbook');
         textbookLi.innerText = `Textbook: ${textbookObj.title}, Author: ${textbookObj.author}`
 
-        nodeToAppendTextbooks.appendChild(textbookLi);
+        //nodeToAppendTextbooks.appendChild(textbookLi);
+        nodeToAppendTextbooks.insertBefore(textbookLi, nodeToAppendTextbooks.lastChild)
         //createTextbookForm(textbookObj, nodeToAppendTextbooks)
 
     });

@@ -15,29 +15,31 @@ class Course {
 
         const courseLi = document.createElement('li');
         const courseSpan = document.createElement('span');
-        const courseTextbookInfo = document.createElement('div');
+        //const courseTextbookInfo = document.createElement('div');
         const textbooks = document.createElement('div');
     
         courseLi.classList.add('course');
         courseSpan.classList.add('course-span');
-        courseTextbookInfo.classList.add('course-textbook-info');
+        //courseTextbookInfo.classList.add('course-textbook-info');
         courseLi.setAttribute('course-data-id', this.id);
         textbooks.classList.add('textbooks');
     
         courseSpan.innerText = `${this.code} - ${this.title}`;
 
         nodeToAppendCourses.appendChild(courseLi);
-        nodeToAppendCourses.appendChild(courseTextbookInfo);
+        //nodeToAppendCourses.appendChild(courseTextbookInfo);
         courseLi.appendChild(courseSpan);
-        courseTextbookInfo.appendChild(textbooks);
+        //courseTextbookInfo.appendChild(textbooks);
+        courseLi.appendChild(textbooks);
+
     }
 
     createTextbookForm() {
         console.log("this is a function")
         //debugger;
         //console.log(this)
-        const courseNode = document.querySelector(`[course-data-id='${this.id}']`);
-        console.log(courseNode.nextElementSibling)
+        const courseNode = document.querySelector(`[course-data-id='${this.id}'] div`);
+        console.log(courseNode)
         //const courseNode = document.querySelector(`[data-school-id='${this.schoolId}'] div div [course-data-id=]`);
         console.log(courseNode);
         const addTextbookDiv = document.createElement('div');
@@ -51,7 +53,9 @@ class Course {
                     <input id='textbook-btn' type="submit" name="submit" value="Submit">
                 </form>`
 
-        courseNode.nextElementSibling.append(addTextbookDiv);
+        //courseNode.nextElementSibling.append(addTextbookDiv);
+        courseNode.append(addTextbookDiv);
+
         //submitTextbook(this.course_id)
         
     }
