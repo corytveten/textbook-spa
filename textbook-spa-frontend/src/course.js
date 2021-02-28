@@ -11,7 +11,7 @@ class Course {
 
     createCourseLi() {
 
-        const nodeToAppendCourses = document.querySelector(`[data-school-id='${this.schoolId}']`);
+        const nodeToAppendCourses = document.querySelector(`[data-school-id='${this.schoolId}'] div div`);
 
         const courseLi = document.createElement('li');
         const courseSpan = document.createElement('span');
