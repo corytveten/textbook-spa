@@ -174,6 +174,10 @@ const loadTextbooks = () => {
 const renderTextbooks = (textbookObjs) => {
 
     textbookObjs.forEach( textbookObj => {
+    
+        const textbook = new Textbook(textbookObj);
+        textbook.renderTextbook();
+    /*
         //console.log(textbookObj);
         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${textbookObj.course_id}'] .textbooks`);
         //console.log(nodeToAppendTextbooks);
@@ -185,7 +189,7 @@ const renderTextbooks = (textbookObjs) => {
         //nodeToAppendTextbooks.appendChild(textbookLi);
         nodeToAppendTextbooks.insertBefore(textbookLi, nodeToAppendTextbooks.lastChild)
         //createTextbookForm(textbookObj, nodeToAppendTextbooks)
-
+        */
     });
 }
 
