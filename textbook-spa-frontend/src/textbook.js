@@ -11,12 +11,17 @@ class Textbook {
          const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbooks`);
          //console.log(nodeToAppendTextbooks);
          const textbookLi = document.createElement('li');
+         const deleteButton = document.createElement('span')
  
          textbookLi.classList.add('textbook');
-         textbookLi.innerText = `Textbook: ${this.title}, Author: ${this.author}`
+         deleteButton.classList.add('delete-textbook-button');
+
+         textbookLi.innerText = `Textbook: ${this.title}, Author: ${this.author}`;
+         deleteButton.innerHTML = '<button type="button">Remove Textbook</button>';
  
          //nodeToAppendTextbooks.appendChild(textbookLi);
          nodeToAppendTextbooks.insertBefore(textbookLi, nodeToAppendTextbooks.lastChild)
+         textbookLi.append(deleteButton);
          //createTextbookForm(textbookObj, nodeToAppendTextbooks)
  
     }

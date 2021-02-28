@@ -74,7 +74,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
             .then(json => {
                 const course = new Course(json);
                 course.createCourseLi();
-                //course.createTextbookForm();
+                course.createTextbookForm();
             })
             //.catch(function(error) {
             //    alert("Course already logged.")
