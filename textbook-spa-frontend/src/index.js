@@ -275,17 +275,36 @@ const deleteTextbook = () => {
     const deleteTextbookButtons = document.querySelectorAll('.delete-textbook-button');
     //console.log(deleteTextbookButtons)
     deleteTextbookButtons.forEach( deleteTextbookButton => {
-        console.log(deleteTextbookButton);
+        //console.log(deleteTextbookButton);
         deleteTextbookButton.addEventListener('click', (e) => {
-            console.log(e.target.parentNode.parentNode.getAttribute('textbook-data-id'));
+            //console.log(e.target.parentNode.parentNode.getAttribute('textbook-data-id'));
             const textbookId = e.target.parentNode.parentNode.getAttribute('textbook-data-id');
+            const textbookElem = e.target.parentNode.parentNode;
+            console.log(textbookElem)
+            textbookElem.remove()
             destroyTextbookDb(textbookId);
+
         })
     })
 }
 
 const destroyTextbookDb = (textbookId) => {
-    console.log(textbookId)
+    console.log(textbookId);
+    fetch(`${TEXTBOOKS_URL}/${textbookId}`, {
+        method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+    })
+    //.then(resp = resp.json())
+    //.then(json => {
+    //    console.log(json);
+    //})
+    //.catch(error => {
+    //    console.log(error.message)
+    //})
+
 }
 
 //TOGGLE FUNCTIONS
