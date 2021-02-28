@@ -160,7 +160,7 @@ const renderCourses = (courseObjs) => {
     loadTextbooks();
     //deleteSchool();
     toggleTextbookView();
-    //deleteTextbook
+    //deleteTextbook();
 }
 
 const loadTextbooks = () => {
@@ -192,6 +192,8 @@ const renderTextbooks = (textbookObjs) => {
         //createTextbookForm(textbookObj, nodeToAppendTextbooks)
         */
     });
+
+    deleteTextbook();
 }
 
 const submitSchool = () => {
@@ -267,6 +269,23 @@ const addNewTextbook = (title, author, courseId) => {
         let text = new Textbook(json);
         text.renderTextbook();
     })
+}
+
+const deleteTextbook = () => {
+    const deleteTextbookButtons = document.querySelectorAll('.delete-textbook-button');
+    //console.log(deleteTextbookButtons)
+    deleteTextbookButtons.forEach( deleteTextbookButton => {
+        console.log(deleteTextbookButton);
+        deleteTextbookButton.addEventListener('click', (e) => {
+            console.log(e.target.parentNode.parentNode.getAttribute('textbook-data-id'));
+            const textbookId = e.target.parentNode.parentNode.getAttribute('textbook-data-id');
+            destroyTextbookDb(textbookId);
+        })
+    })
+}
+
+const destroyTextbookDb = (textbookId) => {
+    console.log(textbookId)
 }
 
 //TOGGLE FUNCTIONS

@@ -14,6 +14,7 @@ class Textbook {
          const deleteButton = document.createElement('span')
  
          textbookLi.classList.add('textbook');
+         textbookLi.setAttribute('textbook-data-id', this.id)
          deleteButton.classList.add('delete-textbook-button');
 
          textbookLi.innerText = `Textbook: ${this.title}, Author: ${this.author}`;
