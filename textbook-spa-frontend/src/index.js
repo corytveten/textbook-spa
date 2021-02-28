@@ -35,51 +35,8 @@ const renderSchool = (schoolObj) => {
  
     school.createSchoolLi();
     
-    /*
-    const schoolLi = document.createElement('li');
-    const schoolNameSpan = document.createElement('span');
-    const schoolCourseInfo = document.createElement('div');
-    const courses = document.createElement('div');
-
-    schoolLi.classList.add('school');
-    schoolNameSpan.classList.add('school-name-span');
-    schoolCourseInfo.classList.add('school-course-info');
-    courses.classList.add('courses');
-
-    schoolNameSpan.innerText = school.name;
-    schoolLi.setAttribute('data-school-id', school.id);
-
-    schoolLi.appendChild(schoolNameSpan);
-    schoolLi.appendChild(schoolCourseInfo);
-    schoolCourseInfo.appendChild(courses);
-    schoolList.appendChild(schoolLi);
-    */
-
-    //createCourseForm(school);
     school.createCourseForm();
 };
-
-//create a form to post courses, form is attached to school
-/*
-const createCourseForm = (schoolObj) => {
-
-    const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"] div`);
-    const addCourseDiv = document.createElement('div');
-    //console.log(schoolNode)
-    addCourseDiv.classList.add('add-course')
-    addCourseDiv.innerHTML = 
-        `<h4>Add a Course (${schoolObj.name})</h4>
-            <form course-form-data-id='${schoolObj.id}'>
-                <input type="text" name='code' value='' placeholder="Enter Course Code" course-code-data-input-id="${schoolObj.id}">
-                <input type='text' name='title' value='' placeholder='Enter Course Title' course-title-data-input-id='${schoolObj.id}'>
-                <input id='course-btn' type="submit" name="submit" value="Submit">
-            </form>`
-    
-    schoolNode.append(addCourseDiv);
-    //appendHideSection(schoolNode);
-    submitCourse(schoolObj.id);
-};
-*/
 
 //submit eventlistener for course
 const submitCourse = (schoolId) => {
@@ -232,28 +189,6 @@ const renderTextbooks = (textbookObjs) => {
     });
 }
 
-/*
-const createTextbookForm = (textbookObj) => {
-    //console.log(textbookObj)
-    const courseNode = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
-    console.log(courseNode);
-    const addTextbookDiv = document.createElement('div');
-
-    addTextbookDiv.classList.add('add-text');
-    addTextbookDiv.innerHTML =
-        `<h4>Add a Textbook</h4>
-            <form textbook-form-data-id='${textbookObj.course_id}'>
-                <input type="text" name='title' value='' placeholder="Enter Textbook Title" textbook-title-data-input-id="${textbookObj.course_id}">
-                <input type='text' name='author' value='' placeholder='Enter Author Last Name' textbook-author-data-input-id='${textbookObj.course_id}'>
-                <input id='textbook-btn' type="submit" name="submit" value="Submit">
-            </form>`
-
-    courseNode.append(addTextbookDiv);
-    //submitTextbook(textbookObj.course_id)
-    
-}
-*/
-
 const submitSchool = () => {
     schoolForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -281,6 +216,7 @@ const addNewSchool = (schoolName) => {
             const school = new School(json);
             school.createSchoolLi();
             school.createCourseForm();
+            
         })
         .catch(function(error) {
             alert("School already exists.")
@@ -289,6 +225,44 @@ const addNewSchool = (schoolName) => {
     
 };
 
+const submitTextbook = (courseId) => {
+    const addTextbookDiv = document.querySelector(`[textbook-form-data-id="${courseId}"]`);
+    //console.log(addTextbookDiv);
+
+    addTextbookDiv.addEventListener('submit', (e) => {
+        e.preventDefault();
+        //console.log(e.target);
+        const textbookTitleInput = document.querySelector(`[textbook-title-data-input-id="${courseId}"]`);
+        const textbookAuthorInput = document.querySelector(`[textbook-author-data-input-id="${courseId}"]`);
+        //console.log(textbookAuthorInput.value, textbookTitleInput.value);
+
+        addNewTextbook(textbookTitleInput.value,textbookAuthorInput.value, courseId);
+        textbookTitleInput.value = '';
+        textbookAuthorInput.value = '';
+    })
+}
+
+const addNewTextbook = (title, author, courseId) => {
+    //console.log(title, author, courseId);
+
+    let textbookConfigObj = {
+        title: title,
+        author: author,
+        'course_id': courseId
+    }
+
+    fetch(TEXTBOOKS_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(textbookConfigObj)
+    })
+    .then(resp => resp.json())
+    .then(json => {
+        console.log(json);
+    })
+}
+
+//TOGGLE FUNCTIONS
 //toggle view of courses by clicking school
 const toggleCourseView = () => {
     //console.log("Hello")
@@ -429,6 +403,73 @@ const clickToHide = (hideSection) => {
         schoolCourseInfo.style.display = "none";
     })
 }
+*/
+
+/*
+const createTextbookForm = (textbookObj) => {
+    //console.log(textbookObj)
+    const courseNode = document.querySelector(`[course-data-id='${textbookObj.course_id}']`);
+    console.log(courseNode);
+    const addTextbookDiv = document.createElement('div');
+
+    addTextbookDiv.classList.add('add-text');
+    addTextbookDiv.innerHTML =
+        `<h4>Add a Textbook</h4>
+            <form textbook-form-data-id='${textbookObj.course_id}'>
+                <input type="text" name='title' value='' placeholder="Enter Textbook Title" textbook-title-data-input-id="${textbookObj.course_id}">
+                <input type='text' name='author' value='' placeholder='Enter Author Last Name' textbook-author-data-input-id='${textbookObj.course_id}'>
+                <input id='textbook-btn' type="submit" name="submit" value="Submit">
+            </form>`
+
+    courseNode.append(addTextbookDiv);
+    //submitTextbook(textbookObj.course_id)
+    
+}
+*/
+
+    //from renderSchool, moved to class
+    /*
+    const schoolLi = document.createElement('li');
+    const schoolNameSpan = document.createElement('span');
+    const schoolCourseInfo = document.createElement('div');
+    const courses = document.createElement('div');
+
+    schoolLi.classList.add('school');
+    schoolNameSpan.classList.add('school-name-span');
+    schoolCourseInfo.classList.add('school-course-info');
+    courses.classList.add('courses');
+
+    schoolNameSpan.innerText = school.name;
+    schoolLi.setAttribute('data-school-id', school.id);
+
+    schoolLi.appendChild(schoolNameSpan);
+    schoolLi.appendChild(schoolCourseInfo);
+    schoolCourseInfo.appendChild(courses);
+    schoolList.appendChild(schoolLi);
+    */
+
+    //createCourseForm(school);
+
+    //create a form to post courses, form is attached to school
+/*
+const createCourseForm = (schoolObj) => {
+
+    const schoolNode = document.querySelector(`[data-school-id="${schoolObj.id}"] div`);
+    const addCourseDiv = document.createElement('div');
+    //console.log(schoolNode)
+    addCourseDiv.classList.add('add-course')
+    addCourseDiv.innerHTML = 
+        `<h4>Add a Course (${schoolObj.name})</h4>
+            <form course-form-data-id='${schoolObj.id}'>
+                <input type="text" name='code' value='' placeholder="Enter Course Code" course-code-data-input-id="${schoolObj.id}">
+                <input type='text' name='title' value='' placeholder='Enter Course Title' course-title-data-input-id='${schoolObj.id}'>
+                <input id='course-btn' type="submit" name="submit" value="Submit">
+            </form>`
+    
+    schoolNode.append(addCourseDiv);
+    //appendHideSection(schoolNode);
+    submitCourse(schoolObj.id);
+};
 */
 
 //display block/none needs to apply to individual school element, not to entire document, may need to add data-ids

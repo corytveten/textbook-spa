@@ -54,7 +54,7 @@ class Course {
         //courseNode.nextElementSibling.append(addTextbookDiv);
         courseNode.append(addTextbookDiv);
 
-        //submitTextbook(this.course_id)
+        submitTextbook(this.id)
         
     }
 }
