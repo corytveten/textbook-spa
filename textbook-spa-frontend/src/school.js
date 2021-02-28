@@ -26,7 +26,7 @@ class School {
         //deleteSchool.classList.add('delete-school-btn');
     
         schoolNameSpan.innerHTML = `<b>${this.name}</b>`;
-        courses.innerHTML = '<p>Courses:</p>'
+        courses.innerHTML = '<p>Select a School for Textbook Information</p>'
         //deleteSchool.innerHTML = '<button type=button>Remove School</button>'
         schoolLi.setAttribute('data-school-id', this.id);
     

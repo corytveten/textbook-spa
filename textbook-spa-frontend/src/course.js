@@ -35,13 +35,11 @@ class Course {
     }
 
     createTextbookForm() {
-        console.log("this is a function")
         //debugger;
         //console.log(this)
         const courseNode = document.querySelector(`[course-data-id='${this.id}'] div`);
-        console.log(courseNode)
+        //console.log(courseNode)
         //const courseNode = document.querySelector(`[data-school-id='${this.schoolId}'] div div [course-data-id=]`);
-        console.log(courseNode);
         const addTextbookDiv = document.createElement('div');
         
         addTextbookDiv.classList.add('add-text');

@@ -164,7 +164,7 @@ const renderCourses = (courseObjs) => {
 
         const course = new Course(courseObj);
         //console.log(courseObj)
-        console.log(course)
+        //console.log(course)
 
         course.createCourseLi();
         course.createTextbookForm();
@@ -199,9 +199,10 @@ const renderCourses = (courseObjs) => {
     //displayCourses();
 
     //hide and seek courses and course form  
-    toggleView();
+    toggleCourseView();
     loadTextbooks();
     //deleteSchool();
+    toggleTextbookView();
 }
 
 const loadTextbooks = () => {
@@ -289,7 +290,7 @@ const addNewSchool = (schoolName) => {
 };
 
 //toggle view of courses by clicking school
-const toggleView = () => {
+const toggleCourseView = () => {
     //console.log("Hello")
 
     const schoolNameSpans = document.querySelectorAll('.school-name-span');
@@ -324,6 +325,31 @@ const toggleView = () => {
     
     })
     
+}
+
+const toggleTextbookView = () => {
+
+    const courseNameSpans = document.querySelectorAll('.course-span');
+    //console.log(courseNameSpans);
+
+    courseNameSpans.forEach( courseName => {
+        let showTextbook = false;
+
+        courseName.addEventListener('click', (e) => {
+            console.log(e.target.nextElementSibling);
+            const textbookDiv = e.target.nextElementSibling;
+
+            showTextbook = !showTextbook
+
+            if (!showTextbook) {
+                textbookDiv.style.display = "none";
+                //deleteButton.style.display = "none"
+            } else {
+                textbookDiv.style.display = "block";
+                //deleteButton.style.display = "block"
+            } 
+        })
+    })
 }
 
 /*

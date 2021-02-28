@@ -30,9 +30,14 @@ body {
   padding-left: 0;
 }
 
+.textbooks {
+  display: none;
+}
+
 .textbook {
   margin-left: 30px; 
   padding-left: 0;
+  color: red;
 }
 
 #add-school {
@@ -65,12 +70,6 @@ body {
   cursor: pointer;
 }
 
-.textbook {
-  color: red;
-  /*outline: red solid 1px;
-  */
-}
-
 .add-text {
   padding-bottom: 20px;
   margin-right: 850px;
@@ -82,4 +81,8 @@ body {
   float: right;
   margin-right: 450px;
   display: none;
+}
+
+.course-span {
+  cursor: pointer;
 }
