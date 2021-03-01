@@ -50,7 +50,8 @@ class School {
                 <input type='text' name='title' value='' placeholder='Enter Course Title' course-title-data-input-id='${this.id}'>
                 <input id='course-btn' type="submit" name="submit" value="Submit">
             </form>`
-    
+
+
         schoolNode.append(addCourseDiv);
         //appendHideSection(schoolNode);
         submitCourse(this.id);

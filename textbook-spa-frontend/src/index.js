@@ -223,6 +223,7 @@ const addNewSchool = (schoolName) => {
             const school = new School(json);
             school.createSchoolLi();
             school.createCourseForm();
+            toggleCourseView();
             
         })
         .catch(function(error) {
