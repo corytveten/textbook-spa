@@ -65,7 +65,12 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(courseConfigObj)
             })
-            .then(resp => resp.json())
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error(resp)
+                }
+                return resp.json()
+            })
             .then(json => {
                 const course = new Course(json);
                 course.createCourseLi();
@@ -244,7 +249,7 @@ const destroyTextbookDb = (textbookId) => {
 const toggleCourseView = () => {
 
     const schoolNameSpans = document.querySelectorAll('.school-name-span');
-    console.log(schoolNameSpans);
+    //console.log(schoolNameSpans);
     
     
     schoolNameSpans.forEach( schoolName => {
@@ -252,23 +257,13 @@ const toggleCourseView = () => {
         let showCourse = false;
         
         schoolName.addEventListener('click', (e) => {
-            console.log(e.target.parentNode)
-            //const deleteButton = e.target.nextElementSibling
             const schoolCourseInfo = e.target.parentNode.nextElementSibling
-            //const schoolCourseInfo = schoolElem.querySelector('.school-course-info')
-            console.log(schoolCourseInfo);
-            //const schoolCourseInfo = schoolElem.querySelector(
-            //    `[data-school-id='${schoolId}']  div`
-            //)
-            
             showCourse = !showCourse;
     
             if (!showCourse) {
                 schoolCourseInfo.style.display = "none";
-                //deleteButton.style.display = "none"
             } else {
                 schoolCourseInfo.style.display = "block";
-                //deleteButton.style.display = "block"
             } 
         })    
     
@@ -279,23 +274,20 @@ const toggleCourseView = () => {
 const toggleTextbookView = () => {
 
     const courseNameSpans = document.querySelectorAll('.course-span');
-    //console.log(courseNameSpans);
 
     courseNameSpans.forEach( courseName => {
         let showTextbook = false;
 
         courseName.addEventListener('click', (e) => {
-            console.log(e.target.nextElementSibling);
+            //console.log(e.target.nextElementSibling);
             const textbookDiv = e.target.nextElementSibling;
 
             showTextbook = !showTextbook
 
             if (!showTextbook) {
                 textbookDiv.style.display = "none";
-                //deleteButton.style.display = "none"
             } else {
                 textbookDiv.style.display = "block";
-                //deleteButton.style.display = "block"
             } 
         })
     })

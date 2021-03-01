@@ -21,13 +21,10 @@ class CoursesController < ApplicationController
         if (course.save)
             render json: course        
         else
-            render :error
+            render json: {error: course.errors}, status: 400
         end       
     end
 
-    #def destroy
-        
-    #end
 
     private
     def course_params
