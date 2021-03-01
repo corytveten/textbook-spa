@@ -44,7 +44,6 @@ const submitCourse = (schoolId) => {
         const courseCodeInput = document.querySelector(`[course-code-data-input-id="${schoolId}"]`);
         const courseTitleInput = document.querySelector(`[course-title-data-input-id="${schoolId}"]`);
 
-        //console.log(courseCodeInput.value, courseTitleInput.value);
         addNewCourse(courseCodeInput.value, courseTitleInput.value, schoolId);
         courseCodeInput.value = '';
         courseTitleInput.value = '';
@@ -80,18 +79,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
             
 }
 
-//event listener that fetches courses
 const loadCourses = () => {
-    const schoolList = document.querySelector('.school-list');
-    
-    //schoolList.addEventListener('click', (e) => {
-        //console.log(e.target.dataset.schoolId);
-        //const schoolCourseInfo = schoolList.querySelector('.school-course-info');
-        //const schoolId = e.target.dataset.schoolId;
-        //const courses = schoolList.querySelector(
-        //    `[data-school-id='${schoolId}']  div div`
-        //)
-
 
         fetch(COURSES_URL)
         .then(res => res.json())
@@ -102,9 +90,6 @@ const loadCourses = () => {
             alert('No courses listed for this school.')
             console.log(error)
         })
-  
-    //}, {once: true});
-        
        
 }
 
@@ -113,31 +98,12 @@ const loadCourses = () => {
 
 //json course object from rails is rendered to text in an li
 const renderCourses = (courseObjs) => {
-    //console.log(courseObjs)
+
     courseObjs.forEach(courseObj => {
 
         const course = new Course(courseObj);
-        //console.log(courseObj)
-        //console.log(course)
-
         course.createCourseLi();
         course.createTextbookForm();
-        /*
-        const nodeToAppendCourses = document.querySelector(`[data-school-id='${courseObj.school_id}'] div div`);
-
-        const courseLi = document.createElement('li');
-        const courseSpan = document.createElement('span');
-    
-        courseLi.classList.add('course');
-        courseSpan.classList.add('course-span');
-        courseLi.setAttribute('course-data-id', courseObj.id);
-    
-        courseSpan.innerText = `${courseObj.code} - ${courseObj.title}`;
-        //console.log(courseLi)
-
-        nodeToAppendCourses.appendChild(courseLi);
-        courseLi.appendChild(courseSpan);
-        */
     })
 
     //const loadTextbooks = (courseId) => {
