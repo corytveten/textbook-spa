@@ -6,7 +6,6 @@ const TEXTBOOKS_URL = `${BASE_URL}/textbooks`;
 const schoolList = document.querySelector('.school-list')
 const schoolForm = document.querySelector('#school-form')
 
-//let showCourse = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadSchools();
@@ -31,17 +30,14 @@ const loadSchools = () => {
 //render school to the DOM
 const renderSchool = (schoolObj) => {
     const school = new School(schoolObj);
-    //console.log(school);
  
     school.createSchoolLi();
-    
     school.createCourseForm();
 };
 
 //submit eventlistener for course
 const submitCourse = (schoolId) => {
     const addCourseDiv = document.querySelector(`[course-form-data-id="${schoolId}"]`);
-    //console.log(addCourseDiv)
     
     addCourseDiv.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -270,6 +266,7 @@ const addNewTextbook = (title, author, courseId) => {
         console.log(json);
         let text = new Textbook(json);
         text.renderTextbook();
+        deleteTextbook();
     })
 }
 
