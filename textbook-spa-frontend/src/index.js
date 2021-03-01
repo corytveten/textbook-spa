@@ -93,9 +93,6 @@ const loadCourses = () => {
        
 }
 
-
-
-
 //json course object from rails is rendered to text in an li
 const renderCourses = (courseObjs) => {
 
@@ -106,24 +103,13 @@ const renderCourses = (courseObjs) => {
         course.createTextbookForm();
     })
 
-    //const loadTextbooks = (courseId) => {
-        //console.log(courseId.textbooks[0]);
-        //const textbook = courseId.textbooks[0].title;
-        //const textLi = document.createElement('li');
-        //textLi.classList.add('textbook');
-        //textLi.innerHTML = `Textbook: <span style="color: #624a72"><em>${textbook}</em></span>`
-        //schoolUl.appendChild(textLi);
-    //}
-
-    //loadTextbooks(courseObj);
-    //displayCourses();
 
     //hide and seek courses and course form  
     toggleCourseView();
     loadTextbooks();
-    //deleteSchool();
+    //hide and seek textbooks
     toggleTextbookView();
-    //deleteTextbook();
+
 }
 
 const loadTextbooks = () => {
@@ -141,19 +127,7 @@ const renderTextbooks = (textbookObjs) => {
     
         const textbook = new Textbook(textbookObj);
         textbook.renderTextbook();
-    /*
-        //console.log(textbookObj);
-        const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${textbookObj.course_id}'] .textbooks`);
-        //console.log(nodeToAppendTextbooks);
-        const textbookLi = document.createElement('li');
 
-        textbookLi.classList.add('textbook');
-        textbookLi.innerText = `Textbook: ${textbookObj.title}, Author: ${textbookObj.author}`
-
-        //nodeToAppendTextbooks.appendChild(textbookLi);
-        nodeToAppendTextbooks.insertBefore(textbookLi, nodeToAppendTextbooks.lastChild)
-        //createTextbookForm(textbookObj, nodeToAppendTextbooks)
-        */
     });
 
     deleteTextbook();
@@ -163,14 +137,13 @@ const submitSchool = () => {
     schoolForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const schoolInput = document.getElementById('school-input')
-        //console.log(schoolInput.value);
+
         addNewSchool(schoolInput.value);
         schoolInput.value = "";
     })
 }
 
 const addNewSchool = (schoolName) => {
-    //console.log(schoolName);
     
     let schoolObj = {
         name: schoolName
@@ -198,23 +171,20 @@ const addNewSchool = (schoolName) => {
 
 const submitTextbook = (courseId) => {
     const addTextbookDiv = document.querySelector(`[textbook-form-data-id="${courseId}"]`);
-    //console.log(addTextbookDiv);
 
     addTextbookDiv.addEventListener('submit', (e) => {
         e.preventDefault();
-        //console.log(e.target);
         const textbookTitleInput = document.querySelector(`[textbook-title-data-input-id="${courseId}"]`);
         const textbookAuthorInput = document.querySelector(`[textbook-author-data-input-id="${courseId}"]`);
-        //console.log(textbookAuthorInput.value, textbookTitleInput.value);
 
         addNewTextbook(textbookTitleInput.value,textbookAuthorInput.value, courseId);
+        //clear form
         textbookTitleInput.value = '';
         textbookAuthorInput.value = '';
     })
 }
 
 const addNewTextbook = (title, author, courseId) => {
-    //console.log(title, author, courseId);
 
     let textbookConfigObj = {
         title: title,
@@ -238,11 +208,8 @@ const addNewTextbook = (title, author, courseId) => {
 
 const deleteTextbook = () => {
     const deleteTextbookButtons = document.querySelectorAll('.delete-textbook-button');
-    //console.log(deleteTextbookButtons)
     deleteTextbookButtons.forEach( deleteTextbookButton => {
-        //console.log(deleteTextbookButton);
         deleteTextbookButton.addEventListener('click', (e) => {
-            //console.log(e.target.parentNode.parentNode.getAttribute('textbook-data-id'));
             const textbookId = e.target.parentNode.parentNode.getAttribute('textbook-data-id');
             const textbookElem = e.target.parentNode.parentNode;
             console.log(textbookElem)
@@ -275,7 +242,6 @@ const destroyTextbookDb = (textbookId) => {
 //TOGGLE FUNCTIONS
 //toggle view of courses by clicking school
 const toggleCourseView = () => {
-    //console.log("Hello")
 
     const schoolNameSpans = document.querySelectorAll('.school-name-span');
     console.log(schoolNameSpans);
@@ -286,7 +252,6 @@ const toggleCourseView = () => {
         let showCourse = false;
         
         schoolName.addEventListener('click', (e) => {
-            //console.log(schoolElem);
             console.log(e.target.parentNode)
             //const deleteButton = e.target.nextElementSibling
             const schoolCourseInfo = e.target.parentNode.nextElementSibling
