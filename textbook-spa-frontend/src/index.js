@@ -72,10 +72,10 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
                 course.createTextbookForm();
                 toggleTextbookView();
             })
-            //.catch(function(error) {
-            //    alert("Course already logged.")
-                //console.log(error.message);
-            //})
+            .catch(function(error) {
+                alert("Course already logged.")
+                console.log(error.message);
+            })
             
 }
 
