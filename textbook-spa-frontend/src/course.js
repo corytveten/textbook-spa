@@ -57,4 +57,50 @@ class Course {
         submitTextbook(this.id)
         
     }
+
+    /*
+    loadTextbooks() {
+
+        fetch(TEXTBOOKS_URL)
+        .then(res => res.json())
+        .then(json => {
+            renderTextbooks(json);
+        })
+    };
+
+    
+    renderTextbooks(textbookObjs) {
+
+        textbookObjs.forEach( textbookObj => {
+        
+            const textbook = new Textbook(textbookObj);
+            textbook.renderTextbook();
+    
+        });
+    
+        deleteTextbook();
+    }
+    */
+
+    toggleTextbookView() {
+
+        const courseNameSpans = document.querySelectorAll('.course-span');
+
+        courseNameSpans.forEach( courseName => {
+            let showTextbook = false;
+
+            courseName.addEventListener('click', (e) => {
+                //console.log(e.target.nextElementSibling);
+                const textbookDiv = e.target.nextElementSibling;
+
+                showTextbook = !showTextbook
+
+                if (!showTextbook) {
+                    textbookDiv.style.display = "none";
+                } else {
+                    textbookDiv.style.display = "block";
+                } 
+            })
+        })
+    }
 }

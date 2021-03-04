@@ -27,13 +27,55 @@ const loadSchools = () => {
     })
 }
 
-//render school to the DOM
+//render schools in database to the DOM
 const renderSchool = (schoolObj) => {
+    //object from json is used to construct School class instance
     const school = new School(schoolObj);
- 
+    
+    //DOM elements for schools created and appended to body
     school.createSchoolLi();
+    
+    //form element created to enter courses that belong to school instance
     school.createCourseForm();
+    
+    //hide and seek DOM elements belonging to school instance
     school.toggleCourseView();
+};
+
+const submitSchool = () => {
+    schoolForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const schoolInput = document.getElementById('school-input')
+
+        addNewSchool(schoolInput.value);
+        schoolInput.value = "";
+    })
+}
+
+const addNewSchool = (schoolName) => {
+    
+    let schoolObj = {
+        name: schoolName
+    }
+
+    fetch(SCHOOLS_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(schoolObj)
+        })
+        .then(resp => resp.json())
+        .then(json => {
+            const school = new School(json);
+            school.createSchoolLi();
+            school.createCourseForm();
+            school.toggleCourseView();
+            
+        })
+        .catch(function(error) {
+            alert("School already exists.")
+            //console.log(error.message);
+        })
+    
 };
 
 //submit eventlistener for course
@@ -76,7 +118,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
                 const course = new Course(json);
                 course.createCourseLi();
                 course.createTextbookForm();
-                toggleTextbookView();
+                course.toggleTextbookView();
             })
             .catch(function(error) {
                 alert("Course already logged.")
@@ -107,6 +149,8 @@ const renderCourses = (courseObjs) => {
         const course = new Course(courseObj);
         course.createCourseLi();
         course.createTextbookForm();
+        //course.loadTextbooks();
+        course.toggleTextbookView();
     })
 
 
@@ -114,9 +158,10 @@ const renderCourses = (courseObjs) => {
     //toggleCourseView();
     loadTextbooks();
     //hide and seek textbooks
-    toggleTextbookView();
+    //toggleTextbookView();
 
 }
+
 
 const loadTextbooks = () => {
 
@@ -126,6 +171,7 @@ const loadTextbooks = () => {
         renderTextbooks(json);
     })
 };
+
 
 const renderTextbooks = (textbookObjs) => {
 
@@ -139,41 +185,7 @@ const renderTextbooks = (textbookObjs) => {
     deleteTextbook();
 }
 
-const submitSchool = () => {
-    schoolForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const schoolInput = document.getElementById('school-input')
 
-        addNewSchool(schoolInput.value);
-        schoolInput.value = "";
-    })
-}
-
-const addNewSchool = (schoolName) => {
-    
-    let schoolObj = {
-        name: schoolName
-    }
-
-    fetch(SCHOOLS_URL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(schoolObj)
-        })
-        .then(resp => resp.json())
-        .then(json => {
-            const school = new School(json);
-            school.createSchoolLi();
-            school.createCourseForm();
-            toggleCourseView();
-            
-        })
-        .catch(function(error) {
-            alert("School already exists.")
-            //console.log(error.message);
-        })
-    
-};
 
 const submitTextbook = (courseId) => {
     const addTextbookDiv = document.querySelector(`[textbook-form-data-id="${courseId}"]`);
@@ -274,6 +286,7 @@ const toggleCourseView = () => {
 }
 */
 
+/*
 const toggleTextbookView = () => {
 
     const courseNameSpans = document.querySelectorAll('.course-span');
@@ -295,6 +308,7 @@ const toggleTextbookView = () => {
         })
     })
 }
+*/
 
 /*
 const deleteSchool = () => {
