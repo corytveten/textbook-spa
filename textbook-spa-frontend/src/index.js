@@ -33,6 +33,7 @@ const renderSchool = (schoolObj) => {
  
     school.createSchoolLi();
     school.createCourseForm();
+    school.toggleCourseView();
 };
 
 //submit eventlistener for course
@@ -110,7 +111,7 @@ const renderCourses = (courseObjs) => {
 
 
     //hide and seek courses and course form  
-    toggleCourseView();
+    //toggleCourseView();
     loadTextbooks();
     //hide and seek textbooks
     toggleTextbookView();
@@ -244,6 +245,7 @@ const destroyTextbookDb = (textbookId) => {
 
 }
 
+/*
 //TOGGLE FUNCTIONS
 //toggle view of courses by clicking school
 const toggleCourseView = () => {
@@ -270,6 +272,7 @@ const toggleCourseView = () => {
     })
     
 }
+*/
 
 const toggleTextbookView = () => {
 

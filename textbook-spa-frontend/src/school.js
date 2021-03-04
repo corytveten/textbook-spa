@@ -57,6 +57,29 @@ class School {
         submitCourse(this.id);
     }
     
+    toggleCourseView() {
 
+        const schoolNameSpans = document.querySelectorAll('.school-name-span');
+        //console.log(schoolNameSpans);
+        
+        
+        schoolNameSpans.forEach( schoolName => {
+    
+            let showCourse = false;
+            
+            schoolName.addEventListener('click', (e) => {
+                const schoolCourseInfo = e.target.parentNode.nextElementSibling
+                showCourse = !showCourse;
+        
+                if (!showCourse) {
+                    schoolCourseInfo.style.display = "none";
+                } else {
+                    schoolCourseInfo.style.display = "block";
+                } 
+            })    
+        
+        })
+        
+    }
 
 }
