@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//fetch schools
+//fetch schools from rails api
 const loadSchools = () => {
     fetch(SCHOOLS_URL)
     .then(res => res.json())
@@ -41,6 +41,57 @@ const renderSchool = (schoolObj) => {
     //hide and seek DOM elements belonging to school instance
     school.toggleCourseView();
 };
+
+//fetch courses from rails api
+const loadCourses = () => {
+
+    fetch(COURSES_URL)
+    .then(res => res.json())
+    .then(json => {
+        renderCourses(json);
+    })
+    .catch(error => {
+        alert('No courses listed for this school.')
+        console.log(error)
+    })
+   
+}
+
+//json course object from rails is rendered to text in an li
+const renderCourses = (courseObjs) => {
+
+    courseObjs.forEach(courseObj => {
+
+        const course = new Course(courseObj);
+        course.createCourseLi();
+        course.createTextbookForm();
+        course.toggleTextbookView();
+    })
+
+    loadTextbooks();
+
+}
+
+const loadTextbooks = () => {
+
+    fetch(TEXTBOOKS_URL)
+    .then(res => res.json())
+    .then(json => {
+        renderTextbooks(json);
+    })
+};
+
+const renderTextbooks = (textbookObjs) => {
+
+    textbookObjs.forEach( textbookObj => {
+    
+        const textbook = new Textbook(textbookObj);
+        textbook.renderTextbook();
+
+    });
+
+    deleteTextbook();
+}
 
 const submitSchool = () => {
     schoolForm.addEventListener('submit', (e) => {
@@ -126,65 +177,6 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
             })
             
 }
-
-const loadCourses = () => {
-
-        fetch(COURSES_URL)
-        .then(res => res.json())
-        .then(json => {
-            renderCourses(json);
-        })
-        .catch(error => {
-            alert('No courses listed for this school.')
-            console.log(error)
-        })
-       
-}
-
-//json course object from rails is rendered to text in an li
-const renderCourses = (courseObjs) => {
-
-    courseObjs.forEach(courseObj => {
-
-        const course = new Course(courseObj);
-        course.createCourseLi();
-        course.createTextbookForm();
-        //course.loadTextbooks();
-        course.toggleTextbookView();
-    })
-
-
-    //hide and seek courses and course form  
-    //toggleCourseView();
-    loadTextbooks();
-    //hide and seek textbooks
-    //toggleTextbookView();
-
-}
-
-
-const loadTextbooks = () => {
-
-    fetch(TEXTBOOKS_URL)
-    .then(res => res.json())
-    .then(json => {
-        renderTextbooks(json);
-    })
-};
-
-
-const renderTextbooks = (textbookObjs) => {
-
-    textbookObjs.forEach( textbookObj => {
-    
-        const textbook = new Textbook(textbookObj);
-        textbook.renderTextbook();
-
-    });
-
-    deleteTextbook();
-}
-
 
 
 const submitTextbook = (courseId) => {

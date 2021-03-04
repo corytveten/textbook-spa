@@ -7,10 +7,6 @@ class School {
         this.courses = schoolData.courses;
     }
 
-
-    
-
-    
     createSchoolLi() {
         
         const schoolLi = document.createElement('li');
