@@ -59,12 +59,18 @@ const loadCourses = () => {
 
 //json course object from rails is rendered to text in an li
 const renderCourses = (courseObjs) => {
-
+    
     courseObjs.forEach(courseObj => {
-
+        //course object used to create a new Course instance
         const course = new Course(courseObj);
+        
+        //DOM elements created and appended
         course.createCourseLi();
+
+        //form element created to enter textbook info (attached to course instance)
         course.createTextbookForm();
+        
+        //hide and seek textbook info
         course.toggleTextbookView();
     })
 
