@@ -26,4 +26,37 @@ class Textbook {
          //createTextbookForm(textbookObj, nodeToAppendTextbooks)
  
     }
+
+    deleteTextbook() {
+        const deleteTextbookButtons = document.querySelectorAll('.delete-textbook-button');
+        deleteTextbookButtons.forEach( deleteTextbookButton => {
+            deleteTextbookButton.addEventListener('click', (e) => {
+                const textbookId = e.target.parentNode.parentNode.getAttribute('textbook-data-id');
+                const textbookElem = e.target.parentNode.parentNode;
+                console.log(textbookElem)
+                textbookElem.remove()
+                this.destroyTextbookDb();
+    
+            })
+        })
+    }
+
+    destroyTextbookDb() {
+        //console.log(textbookId);
+        fetch(`${TEXTBOOKS_URL}/${this.id}`, {
+            method: 'DELETE',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+        })
+        //.then(resp = resp.json())
+        //.then(json => {
+        //    console.log(json);
+        //})
+        //.catch(error => {
+        //    console.log(error.message)
+        //})
+    
+    }
 }

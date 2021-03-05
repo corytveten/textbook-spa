@@ -90,13 +90,15 @@ const loadTextbooks = () => {
 const renderTextbooks = (textbookObjs) => {
 
     textbookObjs.forEach( textbookObj => {
-    
+        //textbook object => Textbook class instance
         const textbook = new Textbook(textbookObj);
-        textbook.renderTextbook();
 
+        //create textbook elements and append to body
+        textbook.renderTextbook();
+        textbook.deleteTextbook();
     });
 
-    deleteTextbook();
+    //deleteTextbook();
 }
 
 const submitSchool = () => {
@@ -135,7 +137,7 @@ const addNewSchool = (schoolName) => {
     
 };
 
-//submit eventlistener for course
+//'submit' eventlistener for course
 const submitCourse = (schoolId) => {
     const addCourseDiv = document.querySelector(`[course-form-data-id="${schoolId}"]`);
     
@@ -218,10 +220,11 @@ const addNewTextbook = (title, author, courseId) => {
         console.log(json);
         let text = new Textbook(json);
         text.renderTextbook();
-        deleteTextbook();
+        text.deleteTextbook();
     })
 }
 
+/*
 const deleteTextbook = () => {
     const deleteTextbookButtons = document.querySelectorAll('.delete-textbook-button');
     deleteTextbookButtons.forEach( deleteTextbookButton => {
@@ -254,6 +257,7 @@ const destroyTextbookDb = (textbookId) => {
     //})
 
 }
+*/
 
 /*
 //TOGGLE FUNCTIONS
