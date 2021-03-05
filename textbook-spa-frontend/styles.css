@@ -1,22 +1,24 @@
 body {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+  background-color: oldlace;
+}
 
-  header {
-    background-color: #624a72;
-    color: white;
-    margin: 0 auto;
-    height: 50px;
-  }
+header {
+  background-color: #624a72;
+  color: white;
+  margin: 0 auto;
+  height: 50px;
+}
 
-  header h1 {
-    padding: 10px;
-    margin: 0;
-  }
+header h1 {
+  padding: 10px;
+  margin: 0;
+}
 
 /* change to table format*/
 .school-list {
+  list-style-type: none;
   margin-left: 25px;
   padding: 0;
 }
@@ -28,6 +30,7 @@ body {
 .course {
   margin-left: 25px; 
   padding-left: 0;
+  color: #2b4b37
 }
 
 .textbooks {
@@ -37,11 +40,15 @@ body {
 .textbook {
   margin-left: 30px; 
   padding-left: 0;
-  color: red;
+  color: #724a54;
 }
 
 #add-school {
-  padding-top: 20px;
+  margin-top: 50px;
+  padding-bottom: 20px;
+  margin-right: 880px;
+  background-color: #624a72;
+  color: white;
 }
 
 #add-school p, form {
@@ -51,7 +58,7 @@ body {
 .add-course {
   padding-bottom: 20px;
   margin-right: 880px;
-  background-color: #624a72;
+  background-color: #2b4b37;
   color: white;
   /*outline: red solid 1px;
   */
@@ -73,7 +80,7 @@ body {
 .add-text {
   padding-bottom: 20px;
   margin-right: 850px;
-  background-color: #624a72;
+  background-color: #724a54;
   color: white;
 }
 

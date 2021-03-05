@@ -8,26 +8,27 @@ const schoolForm = document.querySelector('#school-form')
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    //fetch and render schools from rails api
     loadSchools();
-    submitSchool();
+    //fetch and render courses from rails api
     loadCourses();
+    //add event listener to school form to submit new schools
+    submitSchool();
     //loadTextbooks();
 });
 
 
-//fetch schools from rails api
 const loadSchools = () => {
     fetch(SCHOOLS_URL)
     .then(res => res.json())
     .then(json => {
         json.forEach(schoolObj => {
-
+            //render schools in database to the DOM
             renderSchool(schoolObj)
         })
     })
 }
 
-//render schools in database to the DOM
 const renderSchool = (schoolObj) => {
     //object from json is used to construct School class instance
     const school = new School(schoolObj);
@@ -95,6 +96,8 @@ const renderTextbooks = (textbookObjs) => {
 
         //create textbook elements and append to body
         textbook.renderTextbook();
+
+        //delete textbook element and destroy instance in rails
         textbook.deleteTextbook();
     });
 
