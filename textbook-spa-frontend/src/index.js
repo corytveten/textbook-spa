@@ -476,3 +476,5 @@ const createCourseForm = (schoolObj) => {
 //ADD TOGGLE FOR TEXTBOOK INFO
 
 //ADD POST FETCH TO TEXTBOOK FORM
+
+//add table tag to textbook ul

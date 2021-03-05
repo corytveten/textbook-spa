@@ -1,11 +1,10 @@
 class Course {
     constructor(courseData) {
-        //debugger;
+
         this.id = courseData.id;
         this.code = courseData.code;
         this.title = courseData.title;
         this.schoolId = courseData.school_id;
-        //this.schoolName = courseData.school.name;
     }
 
 
@@ -15,31 +14,23 @@ class Course {
 
         const courseLi = document.createElement('li');
         const courseSpan = document.createElement('span');
-        //const courseTextbookInfo = document.createElement('div');
         const textbooks = document.createElement('div');
     
         courseLi.classList.add('course');
         courseSpan.classList.add('course-span');
-        //courseTextbookInfo.classList.add('course-textbook-info');
         courseLi.setAttribute('course-data-id', this.id);
         textbooks.classList.add('textbooks');
     
         courseSpan.innerText = `${this.code} - ${this.title}`;
 
         nodeToAppendCourses.appendChild(courseLi);
-        //nodeToAppendCourses.appendChild(courseTextbookInfo);
         courseLi.appendChild(courseSpan);
-        //courseTextbookInfo.appendChild(textbooks);
         courseLi.appendChild(textbooks);
 
     }
 
     createTextbookForm() {
-        //debugger;
-        //console.log(this)
         const courseNode = document.querySelector(`[course-data-id='${this.id}'] div`);
-        //console.log(courseNode)
-        //const courseNode = document.querySelector(`[data-school-id='${this.schoolId}'] div div [course-data-id=]`);
         const addTextbookDiv = document.createElement('div');
         
         addTextbookDiv.classList.add('add-text');
@@ -51,7 +42,6 @@ class Course {
                     <input id='textbook-btn' type="submit" name="submit" value="Submit">
                 </form>`
 
-        //courseNode.nextElementSibling.append(addTextbookDiv);
         courseNode.append(addTextbookDiv);
 
         submitTextbook(this.id)
