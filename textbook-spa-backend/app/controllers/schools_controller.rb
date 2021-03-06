@@ -1,7 +1,7 @@
 class SchoolsController < ApplicationController
     
     def index
-        schools = School.all
+        schools = School.order(:name)
         render json: SchoolSerializer.new(schools).to_serialized_json
     end
 
