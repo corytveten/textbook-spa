@@ -46,7 +46,8 @@ class Course {
         textbookTable.classList.add('textbook-table');
     
         courseSpan.innerText = `${this.code} - ${this.title}`;
-        textbookTable.innerHTML = '<tr><th>Title</th><th>Author</th></tr>'
+        textbooks.innerHTML = `<b>Textbooks for ${this.code}:</b>`
+        textbookTable.innerHTML = '<tr><th>Title</th><th>Author</th><th>Remove</th></tr>';
 
 
         nodeToAppendCourses.appendChild(courseLi);

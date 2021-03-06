@@ -27,7 +27,7 @@ class Textbook {
     renderTextbook() {
         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbook-table tbody`);
         const textbookTr = document.createElement('tr');
-        const deleteButton = document.createElement('span')
+        const deleteButton = document.createElement('td')
 
         textbookTr.classList.add('textbook');
         textbookTr.setAttribute('textbook-data-id', this.id)

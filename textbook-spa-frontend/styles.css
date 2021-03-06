@@ -34,7 +34,10 @@ header h1 {
 }
 
 .textbooks {
+  margin-top: 10px; 
+  margin-bottom: 10px;
   display: none;
+  color: #724a54
 }
 
 .textbook {
@@ -95,16 +98,16 @@ header h1 {
 }
 
 .delete-textbook-button {
-  margin-left: 100px;
+  margin-left: 5px;
+  margin-right: 450px;
 }
 
 .textbook-table {
-  width: 100%;
+  table-layout: fixed;
+  width: 65%;
   color: #724a54;
-  border: 1px #724a54;
 }
 
 .textbook-table, th, td {
-  padding; 15px;
-  border: 1px #724a54;
+  border: 1px solid #724a54;
 }
