@@ -97,3 +97,14 @@ header h1 {
 .delete-textbook-button {
   margin-left: 100px;
 }
+
+.textbook-table {
+  width: 100%;
+  color: #724a54;
+  border: 1px #724a54;
+}
+
+.textbook-table, th, td {
+  padding; 15px;
+  border: 1px #724a54;
+}

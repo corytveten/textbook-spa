@@ -7,7 +7,7 @@ class Course {
         this.schoolId = courseData.school_id;
     }
 
-
+    /*
     createCourseLi() {
 
         const nodeToAppendCourses = document.querySelector(`[data-school-id='${this.schoolId}'] div div`);
@@ -28,7 +28,36 @@ class Course {
         courseLi.appendChild(textbooks);
 
     }
+    */
 
+    createCourseLi() {
+
+        const nodeToAppendCourses = document.querySelector(`[data-school-id='${this.schoolId}'] div div`);
+
+        const courseLi = document.createElement('li');
+        const courseSpan = document.createElement('span');
+        const textbooks = document.createElement('div');
+        const textbookTable = document.createElement('table')
+    
+        courseLi.classList.add('course');
+        courseSpan.classList.add('course-span');
+        courseLi.setAttribute('course-data-id', this.id);
+        textbooks.classList.add('textbooks');
+        textbookTable.classList.add('textbook-table');
+    
+        courseSpan.innerText = `${this.code} - ${this.title}`;
+        textbookTable.innerHTML = '<tr><th>Title</th><th>Author</th></tr>'
+
+
+        nodeToAppendCourses.appendChild(courseLi);
+        courseLi.appendChild(courseSpan);
+        courseLi.appendChild(textbooks);
+        textbooks.appendChild(textbookTable);
+
+    }
+
+
+    
     createTextbookForm() {
         const courseNode = document.querySelector(`[course-data-id='${this.id}'] div`);
         const addTextbookDiv = document.createElement('div');
@@ -47,6 +76,7 @@ class Course {
         submitTextbook(this.id)
         
     }
+    
 
     /*
     loadTextbooks() {

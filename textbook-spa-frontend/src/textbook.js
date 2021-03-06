@@ -5,9 +5,9 @@ class Textbook {
         this.author = textbookData.author;
         this.courseId = textbookData.course_id;
     }
-
+    /*
     renderTextbook() {
-         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbooks`);
+         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbook`);
          const textbookLi = document.createElement('li');
          const deleteButton = document.createElement('span')
  
@@ -22,6 +22,25 @@ class Textbook {
          textbookLi.append(deleteButton);
  
     }
+    */
+
+    renderTextbook() {
+        const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbook-table tbody`);
+        const textbookTr = document.createElement('tr');
+        const deleteButton = document.createElement('span')
+
+        textbookTr.classList.add('textbook');
+        textbookTr.setAttribute('textbook-data-id', this.id)
+        deleteButton.classList.add('delete-textbook-button');
+
+        textbookTr.innerHTML = `<td>${this.title}</td><td>${this.author}</td>`;
+        deleteButton.innerHTML = '<button type="button">Remove Textbook</button>';
+
+        //nodeToAppendTextbooks.insertBefore(textbookLi, nodeToAppendTextbooks.lastChild)
+        nodeToAppendTextbooks.appendChild(textbookTr);
+        textbookTr.append(deleteButton);
+
+   }
 
     deleteTextbook() {
         const deleteTextbookButtons = document.querySelectorAll('.delete-textbook-button');
