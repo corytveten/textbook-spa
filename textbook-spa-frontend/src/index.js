@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //loadTextbooks();
 });
 
-
 const loadSchools = () => {
     fetch(SCHOOLS_URL)
     .then(res => res.json())
@@ -51,10 +50,10 @@ const loadCourses = () => {
     .then(json => {
         renderCourses(json);
     })
-    .catch(error => {
-        alert('No courses listed for this school.')
-        console.log(error)
-    })
+    //.catch(error => {
+    //    alert('No courses listed for this school.')
+    //    console.log(error)
+    //})
    
 }
 
@@ -184,7 +183,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
             })
             .catch(function(error) {
                 alert("Course already logged.")
-                console.log(error.message);
+                console.log(error);
             })
             
 }

@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
 
     def index
-        courses = Course.all
+        courses = Course.order(:code)
         render json: CourseSerializer.new(courses).to_serialized_json
         
     end
