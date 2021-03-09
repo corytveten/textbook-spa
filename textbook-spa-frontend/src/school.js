@@ -6,6 +6,7 @@ class School {
         this.courses = schoolData.courses;
     }
 
+    //create school li plus span with school name that will eventually handle a click event. also create courses div which will containcourse info and course form. course div display will toggle: block/none.
     createSchoolLi() {
         
         const schoolLi = document.createElement('li');
@@ -21,14 +22,15 @@ class School {
         schoolNameSpan.innerHTML = `<b>${this.name}</b>`;
         courses.innerHTML = '<p>Select a Course for Textbook Information or Add a Course</p>'
         schoolLi.setAttribute('data-school-id', this.id);
-    
+
         schoolLi.appendChild(schoolNameSpan);
         schoolLi.appendChild(schoolCourseInfo);
         schoolCourseInfo.appendChild(courses);
         schoolList.appendChild(schoolLi);
-        
+    
     }
 
+    
     createCourseForm() {
         const schoolNode = document.querySelector(`[data-school-id="${this.id}"] div`);
         const addCourseDiv = document.createElement('div');

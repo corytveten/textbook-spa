@@ -7,29 +7,7 @@ class Course {
         this.schoolId = courseData.school_id;
     }
 
-    /*
-    createCourseLi() {
-
-        const nodeToAppendCourses = document.querySelector(`[data-school-id='${this.schoolId}'] div div`);
-
-        const courseLi = document.createElement('li');
-        const courseSpan = document.createElement('span');
-        const textbooks = document.createElement('div');
-    
-        courseLi.classList.add('course');
-        courseSpan.classList.add('course-span');
-        courseLi.setAttribute('course-data-id', this.id);
-        textbooks.classList.add('textbooks');
-    
-        courseSpan.innerText = `${this.code} - ${this.title}`;
-
-        nodeToAppendCourses.appendChild(courseLi);
-        courseLi.appendChild(courseSpan);
-        courseLi.appendChild(textbooks);
-
-    }
-    */
-
+    //create course li plus span with course code and title that will eventually handle a click event. also create textbooks div which will contain textbook info table and add textbook form. textbooks div display will toggle: block/none.
     createCourseLi() {
 
         const nodeToAppendCourses = document.querySelector(`[data-school-id='${this.schoolId}'] div div`);

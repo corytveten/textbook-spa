@@ -108,6 +108,7 @@ const submitSchool = () => {
         e.preventDefault();
         const schoolInput = document.getElementById('school-input')
 
+        //use fetch to post new school and then clear form field
         addNewSchool(schoolInput.value);
         schoolInput.value = "";
     })
@@ -134,7 +135,7 @@ const addNewSchool = (schoolName) => {
         })
         .catch(function(error) {
             alert("School already exists.")
-            //console.log(error.message);
+            //console.log(error);
         })
     
 };
@@ -148,6 +149,7 @@ const submitCourse = (schoolId) => {
         const courseCodeInput = document.querySelector(`[course-code-data-input-id="${schoolId}"]`);
         const courseTitleInput = document.querySelector(`[course-title-data-input-id="${schoolId}"]`);
 
+        //use fetch to post new course and then clear form
         addNewCourse(courseCodeInput.value, courseTitleInput.value, schoolId);
         courseCodeInput.value = '';
         courseTitleInput.value = '';
@@ -197,8 +199,8 @@ const submitTextbook = (courseId) => {
         const textbookTitleInput = document.querySelector(`[textbook-title-data-input-id="${courseId}"]`);
         const textbookAuthorInput = document.querySelector(`[textbook-author-data-input-id="${courseId}"]`);
 
+        //use fetch to post new textbook and then clear form
         addNewTextbook(textbookTitleInput.value,textbookAuthorInput.value, courseId);
-        //clear form
         textbookTitleInput.value = '';
         textbookAuthorInput.value = '';
     })
@@ -219,7 +221,6 @@ const addNewTextbook = (title, author, courseId) => {
     })
     .then(resp => resp.json())
     .then(json => {
-        console.log(json);
         let text = new Textbook(json);
         text.renderTextbook();
         text.deleteTextbook();
