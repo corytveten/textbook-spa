@@ -9,15 +9,14 @@ const schoolForm = document.querySelector('#school-form')
 
 document.addEventListener('DOMContentLoaded', () => {
     //fetch and render schools from rails api
-    loadSchools();
+    getSchools();
     //fetch and render courses from rails api
-    loadCourses();
+    getCourses();
     //add event listener to school form to submit new schools
     submitSchool();
-    //loadTextbooks();
 });
 
-const loadSchools = () => {
+function getSchools() {
     fetch(SCHOOLS_URL)
     .then(res => res.json())
     .then(json => {
@@ -28,7 +27,7 @@ const loadSchools = () => {
     })
 }
 
-const renderSchool = (schoolObj) => {
+function renderSchool(schoolObj) {
     //object from json is used to construct School class instance
     const school = new School(schoolObj);
     
@@ -43,22 +42,19 @@ const renderSchool = (schoolObj) => {
 };
 
 //fetch courses from rails api
-const loadCourses = () => {
+function getCourses() {
 
     fetch(COURSES_URL)
     .then(res => res.json())
     .then(json => {
         renderCourses(json);
     })
-    //.catch(error => {
-    //    alert('No courses listed for this school.')
-    //    console.log(error)
-    //})
+
    
 }
 
 //json course object from rails is rendered to text in an li
-const renderCourses = (courseObjs) => {
+function renderCourses(courseObjs) {
     
     courseObjs.forEach(courseObj => {
         //course object used to create a new Course instance
@@ -74,11 +70,11 @@ const renderCourses = (courseObjs) => {
         course.toggleTextbookView();
     })
 
-    loadTextbooks();
+    getTextbooks();
 
 }
 
-const loadTextbooks = () => {
+function getTextbooks() {
 
     fetch(TEXTBOOKS_URL)
     .then(res => res.json())
@@ -87,7 +83,7 @@ const loadTextbooks = () => {
     })
 };
 
-const renderTextbooks = (textbookObjs) => {
+function renderTextbooks(textbookObjs) {
 
     textbookObjs.forEach( textbookObj => {
         //textbook object => Textbook class instance
@@ -100,10 +96,9 @@ const renderTextbooks = (textbookObjs) => {
         textbook.deleteTextbook();
     });
 
-    //deleteTextbook();
 }
 
-const submitSchool = () => {
+function submitSchool() {
     schoolForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const schoolInput = document.getElementById('school-input')
@@ -114,7 +109,7 @@ const submitSchool = () => {
     })
 }
 
-const addNewSchool = (schoolName) => {
+function addNewSchool(schoolName) {
     
     let schoolObj = {
         name: schoolName
@@ -141,7 +136,7 @@ const addNewSchool = (schoolName) => {
 };
 
 //'submit' eventlistener for course
-const submitCourse = (schoolId) => {
+function submitCourse(schoolId) {
     const addCourseDiv = document.querySelector(`[course-form-data-id="${schoolId}"]`);
     
     addCourseDiv.addEventListener('submit', (e) => {
@@ -157,11 +152,11 @@ const submitCourse = (schoolId) => {
     
 }
 
-const addNewCourse = (courseCode, courseTitle, schoolId) => {
+function addNewCourse(courseCode, courseTitle, schoolId) {
         //console.log(courseCode, courseTitle, schoolId);
 
         let courseConfigObj = {
-           code: courseCode,
+            code: courseCode,
             title: courseTitle,
             'school_id': schoolId
         }
@@ -191,7 +186,7 @@ const addNewCourse = (courseCode, courseTitle, schoolId) => {
 }
 
 
-const submitTextbook = (courseId) => {
+function submitTextbook(courseId) {
     const addTextbookDiv = document.querySelector(`[textbook-form-data-id="${courseId}"]`);
 
     addTextbookDiv.addEventListener('submit', (e) => {
@@ -206,7 +201,7 @@ const submitTextbook = (courseId) => {
     })
 }
 
-const addNewTextbook = (title, author, courseId) => {
+function addNewTextbook(title, author, courseId) {
 
     let textbookConfigObj = {
         title: title,

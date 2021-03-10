@@ -5,24 +5,6 @@ class Textbook {
         this.author = textbookData.author;
         this.courseId = textbookData.course_id;
     }
-    /*
-    renderTextbook() {
-         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbook`);
-         const textbookLi = document.createElement('li');
-         const deleteButton = document.createElement('span')
- 
-         textbookLi.classList.add('textbook');
-         textbookLi.setAttribute('textbook-data-id', this.id)
-         deleteButton.classList.add('delete-textbook-button');
-
-         textbookLi.innerText = `Textbook: ${this.title}, Author: ${this.author}`;
-         deleteButton.innerHTML = '<button type="button">Remove Textbook</button>';
- 
-         nodeToAppendTextbooks.insertBefore(textbookLi, nodeToAppendTextbooks.lastChild)
-         textbookLi.append(deleteButton);
- 
-    }
-    */
 
     renderTextbook() {
         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbook-table tbody`);
