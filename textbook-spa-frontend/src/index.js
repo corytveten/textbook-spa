@@ -3,8 +3,8 @@ const BASE_URL = "http://localhost:3000";
 const SCHOOLS_URL = `${BASE_URL}/schools`;
 const COURSES_URL = `${BASE_URL}/courses`;
 const TEXTBOOKS_URL = `${BASE_URL}/textbooks`;
-const schoolList = document.querySelector('.school-list')
-const schoolForm = document.querySelector('#school-form')
+const schoolList = document.querySelector('.school-list');
+const schoolForm = document.querySelector('#school-form');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //fetch and render courses from rails api
     getCourses();
     //add event listener to school form to submit new schools
+    getTextbooks();
     submitSchool();
 });
 
@@ -70,7 +71,7 @@ function renderCourses(courseObjs) {
         course.toggleTextbookView();
     })
 
-    getTextbooks();
+    //getTextbooks();
 
 }
 
