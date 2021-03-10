@@ -7,6 +7,45 @@ class Course {
         this.schoolId = courseData.school_id;
     }
 
+//fetch courses from rails api
+static getCourses() {
+
+    fetch(COURSES_URL)
+    .then(res => res.json())
+    .then(json => {
+        json.forEach(courseObj => {
+            const course = new Course(courseObj);
+            course.renderCourse();
+        })
+    
+        Textbook.getTextbooks();
+    })
+   
+}
+
+
+//json course object from rails is rendered to text in an li
+renderCourse() {
+    
+    //courseObjs.forEach(courseObj => {
+        //course object used to create a new Course instance
+        //const course = new Course(courseObj);
+        
+        //DOM elements created and appended
+        this.createCourseLi();
+
+        //form element created to enter textbook info (attached to course instance)
+        this.createTextbookForm();
+        
+        //hide and seek textbook info
+        this.toggleTextbookView();
+    //})
+
+    //Textbook.getTextbooks();
+    //getTextbooks();
+
+}
+
     //create course li plus span with course code and title that will eventually handle a click event. also create textbooks div which will contain textbook info table and add textbook form. textbooks div display will toggle: block/none.
     createCourseLi() {
 

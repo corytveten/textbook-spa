@@ -6,7 +6,36 @@ class Textbook {
         this.courseId = textbookData.course_id;
     }
 
+    static getTextbooks() {
+
+        fetch(TEXTBOOKS_URL)
+        .then(res => res.json())
+        .then(json => {
+            json.forEach(textbookObj => {
+                const textbook = new Textbook(textbookObj);
+                textbook.renderTextbook();
+            })
+            //renderTextbooks(json);
+        })
+    };
+    
     renderTextbook() {
+    
+        //textbookObjs.forEach( textbookObj => {
+            //textbook object => Textbook class instance
+            //const textbook = new Textbook(textbookObj);
+    
+            //create textbook elements and append to body
+            this.createTextbookLi();
+    
+            //delete textbook element and destroy instance in rails
+            this.deleteTextbook();
+        //});
+    
+    }
+
+    createTextbookLi() {
+
         const nodeToAppendTextbooks = document.querySelector(`[course-data-id='${this.courseId}'] .textbook-table tbody`);
         const textbookTr = document.createElement('tr');
         const deleteButton = document.createElement('td')
@@ -17,7 +46,6 @@ class Textbook {
 
         textbookTr.innerHTML = `<td>${this.title}</td><td>${this.author}</td>`;
         deleteButton.innerHTML = '<button type="button">Remove Textbook</button>';
-
         nodeToAppendTextbooks.appendChild(textbookTr);
         textbookTr.append(deleteButton);
 

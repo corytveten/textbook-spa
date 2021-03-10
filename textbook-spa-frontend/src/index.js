@@ -8,15 +8,19 @@ const schoolForm = document.querySelector('#school-form');
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    //console.log(School)
     //fetch and render schools from rails api
-    getSchools();
+    School.getSchools();
+    
     //fetch and render courses from rails api
-    getCourses();
+    Course.getCourses();
+    
     //add event listener to school form to submit new schools
-    getTextbooks();
+    Textbook.getTextbooks();
     submitSchool();
 });
 
+/*
 function getSchools() {
     fetch(SCHOOLS_URL)
     .then(res => res.json())
@@ -27,6 +31,7 @@ function getSchools() {
         })
     })
 }
+
 
 function renderSchool(schoolObj) {
     //object from json is used to construct School class instance
@@ -41,7 +46,8 @@ function renderSchool(schoolObj) {
     //hide and seek DOM elements belonging to school instance
     school.toggleCourseView();
 };
-
+*/
+/*
 //fetch courses from rails api
 function getCourses() {
 
@@ -53,6 +59,7 @@ function getCourses() {
 
    
 }
+
 
 //json course object from rails is rendered to text in an li
 function renderCourses(courseObjs) {
@@ -71,10 +78,12 @@ function renderCourses(courseObjs) {
         course.toggleTextbookView();
     })
 
-    //getTextbooks();
+    getTextbooks();
 
 }
+*/
 
+/*
 function getTextbooks() {
 
     fetch(TEXTBOOKS_URL)
@@ -98,6 +107,7 @@ function renderTextbooks(textbookObjs) {
     });
 
 }
+*/
 
 function submitSchool() {
     schoolForm.addEventListener('submit', (e) => {

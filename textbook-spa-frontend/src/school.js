@@ -6,6 +6,33 @@ class School {
         this.courses = schoolData.courses;
     }
 
+    static getSchools() {
+        fetch(SCHOOLS_URL)
+        .then(res => res.json())
+        .then(json => {
+            json.forEach(schoolObj => {
+                //render schools in database to the DOM
+                const school = new School(schoolObj);
+                //console.log(school)
+                school.renderSchool();
+            })
+        })
+    }
+    
+    renderSchool() {
+        //object from json is used to construct School class instance
+        //const school = new School(schoolObj);
+        
+        //DOM elements for schools created and appended to body
+        this.createSchoolLi();
+        
+        //form element created to enter courses that belong to school instance
+        this.createCourseForm();
+        
+        //hide and seek DOM elements belonging to school instance
+        this.toggleCourseView();
+    }
+    
     //create school li plus span with school name that will eventually handle a click event. also create courses div which will containcourse info and course form. course div display will toggle: block/none.
     createSchoolLi() {
         
