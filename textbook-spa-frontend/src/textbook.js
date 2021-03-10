@@ -18,7 +18,6 @@ class Textbook {
         textbookTr.innerHTML = `<td>${this.title}</td><td>${this.author}</td>`;
         deleteButton.innerHTML = '<button type="button">Remove Textbook</button>';
 
-        //nodeToAppendTextbooks.insertBefore(textbookLi, nodeToAppendTextbooks.lastChild)
         nodeToAppendTextbooks.appendChild(textbookTr);
         textbookTr.append(deleteButton);
 
@@ -28,9 +27,7 @@ class Textbook {
         const deleteTextbookButtons = document.querySelectorAll('.delete-textbook-button');
         deleteTextbookButtons.forEach( deleteTextbookButton => {
             deleteTextbookButton.addEventListener('click', (e) => {
-                const textbookId = e.target.parentNode.parentNode.getAttribute('textbook-data-id');
                 const textbookElem = e.target.parentNode.parentNode;
-                console.log(textbookElem)
                 textbookElem.remove()
                 this.destroyTextbookDb();
     
@@ -39,7 +36,6 @@ class Textbook {
     }
 
     destroyTextbookDb() {
-        //console.log(textbookId);
         fetch(`${TEXTBOOKS_URL}/${this.id}`, {
             method: 'DELETE',
                     headers: {

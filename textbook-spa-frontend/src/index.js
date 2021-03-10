@@ -144,8 +144,9 @@ function submitCourse(schoolId) {
         const courseCodeInput = document.querySelector(`[course-code-data-input-id="${schoolId}"]`);
         const courseTitleInput = document.querySelector(`[course-title-data-input-id="${schoolId}"]`);
 
-        //use fetch to post new course and then clear form
-        addNewCourse(courseCodeInput.value, courseTitleInput.value, schoolId);
+        const courseInfo = [courseCodeInput.value, courseTitleInput.value, schoolId]
+        //use fetch to post new course and then clear form (with rest parameter)
+        addNewCourse(...courseInfo);
         courseCodeInput.value = '';
         courseTitleInput.value = '';
     })

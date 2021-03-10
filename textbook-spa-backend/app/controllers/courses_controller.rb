@@ -8,11 +8,8 @@ class CoursesController < ApplicationController
 
     def show
         course = Course.find_by(id: params[:id])
-        #if (course)
-            render json: CourseSerializer.new(course).to_serialized_json
-        #else
-        #    render :error #{message: "no courses for school"}
-        #end
+        render json: CourseSerializer.new(course).to_serialized_json
+
     end
 
     def create
