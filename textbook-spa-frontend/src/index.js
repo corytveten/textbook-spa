@@ -16,98 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     Course.getCourses();
     
     //add event listener to school form to submit new schools
-    Textbook.getTextbooks();
+    //Textbook.getTextbooks();
     submitSchool();
 });
 
-/*
-function getSchools() {
-    fetch(SCHOOLS_URL)
-    .then(res => res.json())
-    .then(json => {
-        json.forEach(schoolObj => {
-            //render schools in database to the DOM
-            renderSchool(schoolObj)
-        })
-    })
-}
 
-
-function renderSchool(schoolObj) {
-    //object from json is used to construct School class instance
-    const school = new School(schoolObj);
-    
-    //DOM elements for schools created and appended to body
-    school.createSchoolLi();
-    
-    //form element created to enter courses that belong to school instance
-    school.createCourseForm();
-    
-    //hide and seek DOM elements belonging to school instance
-    school.toggleCourseView();
-};
-*/
-/*
-//fetch courses from rails api
-function getCourses() {
-
-    fetch(COURSES_URL)
-    .then(res => res.json())
-    .then(json => {
-        renderCourses(json);
-    })
-
-   
-}
-
-
-//json course object from rails is rendered to text in an li
-function renderCourses(courseObjs) {
-    
-    courseObjs.forEach(courseObj => {
-        //course object used to create a new Course instance
-        const course = new Course(courseObj);
-        
-        //DOM elements created and appended
-        course.createCourseLi();
-
-        //form element created to enter textbook info (attached to course instance)
-        course.createTextbookForm();
-        
-        //hide and seek textbook info
-        course.toggleTextbookView();
-    })
-
-    getTextbooks();
-
-}
-*/
-
-/*
-function getTextbooks() {
-
-    fetch(TEXTBOOKS_URL)
-    .then(res => res.json())
-    .then(json => {
-        renderTextbooks(json);
-    })
-};
-
-function renderTextbooks(textbookObjs) {
-
-    textbookObjs.forEach( textbookObj => {
-        //textbook object => Textbook class instance
-        const textbook = new Textbook(textbookObj);
-
-        //create textbook elements and append to body
-        textbook.renderTextbook();
-
-        //delete textbook element and destroy instance in rails
-        textbook.deleteTextbook();
-    });
-
-}
-*/
 
 function submitSchool() {
     schoolForm.addEventListener('submit', (e) => {
@@ -145,6 +58,7 @@ function addNewSchool(schoolName) {
         })
     
 };
+
 
 //'submit' eventlistener for course
 function submitCourse(schoolId) {

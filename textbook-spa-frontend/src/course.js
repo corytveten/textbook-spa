@@ -27,9 +27,6 @@ static getCourses() {
 //json course object from rails is rendered to text in an li
 renderCourse() {
     
-    //courseObjs.forEach(courseObj => {
-        //course object used to create a new Course instance
-        //const course = new Course(courseObj);
         
         //DOM elements created and appended
         this.createCourseLi();
@@ -39,10 +36,7 @@ renderCourse() {
         
         //hide and seek textbook info
         this.toggleTextbookView();
-    //})
 
-    //Textbook.getTextbooks();
-    //getTextbooks();
 
 }
 
