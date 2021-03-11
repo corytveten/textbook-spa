@@ -6,9 +6,11 @@ const TEXTBOOKS_URL = `${BASE_URL}/textbooks`;
 const schoolList = document.querySelector('.school-list');
 const schoolForm = document.querySelector('#school-form');
 
+const newAddition = document.querySelector('#new-addition');
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    //console.log(School)
+
     //fetch and render schools from rails api
     School.getSchools();
     
@@ -16,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     Course.getCourses();
     
     //add event listener to school form to submit new schools
-    //Textbook.getTextbooks();
     submitSchool();
+
 });
 
 
@@ -147,3 +149,30 @@ function addNewTextbook(title, author, courseId) {
         text.deleteTextbook();
     })
 }
+
+/*
+function newAdditionFunc() {
+    const newDiv = document.createElement('div');
+
+    newDiv.classList.add("new-add-input");
+    newDiv.innerHTML = "<p>Add Input Here</p> <br><form id='form-text'> <input type='text' name='input'></input><br><input type='submit' value='Submit'></form>"
+
+
+    newAddition.appendChild(newDiv);
+}
+
+
+
+function getValueAndAddToDOM() {
+    const submitBtn = document.getElementById('form-text');
+    submitBtn.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log(e.target.input.value)
+        const inputValue = e.target.input.value;
+        const p = document.createElement('p');
+        p.innerText = inputValue;
+        newAddition.appendChild(p)
+
+    })
+}
+*/
